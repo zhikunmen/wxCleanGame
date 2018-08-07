@@ -21,5 +21,5 @@
 		<e:Image id="fruit4" source="wm_png" x="422" y="189"/>
 	</e:Group>
 	<e:Group id="treeGroup" height="200" width="200" x="1" bottom="3"/>
-	<e:Image id="beganBtn" x="328" source="open_btn_st_png" anchorOffsetX="96" anchorOffsetY="98" verticalCenter="174"/>
+	<e:Image id="beganBtn" x="328" anchorOffsetX="96" anchorOffsetY="98" verticalCenter="174" source="btn_json.open_btn_st"/>
 </e:Skin>

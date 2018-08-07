@@ -28,7 +28,7 @@ class Cell extends egret.Sprite {
     }
 
     public init() {
-        var idpng = ["1_png", "2_png", "3_png", "4_png", "5_png",];
+        var idpng = ["num1_png", "num2_png", "num3_png", "num4_png", "num5_png",];
         idpng = ["game_Apple_png", "game_Blueberry_png",
             "game_Grape_png", "game_Lemon_png", "game_Watermelon_png"];
         var res = idpng[this.id - 1];

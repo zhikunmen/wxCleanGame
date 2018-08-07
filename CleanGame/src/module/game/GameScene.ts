@@ -21,25 +21,26 @@ class GameScene extends egret.DisplayObjectContainer {
 
     //////////////////////tiled////////////////////////////////////////////////
     private onLoadMap() {
-        var url: string = "resource/cleanGame/tmx/map1.tmx";
-        var urlLoader: egret.URLLoader = new egret.URLLoader();
-        urlLoader.dataFormat = egret.URLLoaderDataFormat.TEXT;
-        urlLoader.addEventListener(egret.Event.COMPLETE, function (event: egret.Event): void {
-            var data: any = egret.XML.parse(event.target.data);
+        var url: string = "http://114.119.6.83/mj_h5_dev/lobby/guangdong-jipinghu/cleanGame/map1.xml";
+        // var urlLoader: egret.URLLoader = new egret.URLLoader();
+        // urlLoader.dataFormat = egret.URLLoaderDataFormat.TEXT;
+        // urlLoader.addEventListener(egret.Event.COMPLETE, function (event: egret.Event): void {
+        var data: any = RES.getResByUrl(url, (data) => {
+            console.error(data);
             this.map = new tiled.TMXTilemap(2000, 2000, data, url);
             this.map.render();
 
             this.map.addEventListener(tiled.TMXImageLoadEvent.ALL_IMAGE_COMPLETE, this.onLoaded, this);
             this.addChildAt(this.map, 1);
-        }, this);
-        urlLoader.load(new egret.URLRequest(url));
+        }, this, RES.ResourceItem.TYPE_XML);//egret.XML.parse(event.target.data);
+        // }, this);
+        // urlLoader.load(new egret.URLRequest(url));
     }
 
     private onLoaded() {
         if (this.map) {
             this.map.visible = true;
             this.map.scaleX = this.map.scaleY = 8 / 9;
-            return;
             var layers = this.map.getLayers();
             for (var k in layers) {
 
@@ -225,7 +226,7 @@ class GameScene extends egret.DisplayObjectContainer {
             }
         }
         this.pointLine = new eui.Image();
-        this.pointLine.texture = RES.getRes("line_png");
+        this.pointLine.texture = RES.getRes("line");
         this.pointLine.width = 0;
         this.pointLine.anchorOffsetX = 0;
         this.pointLine.anchorOffsetY = this.pointLine.height / 2;
@@ -439,7 +440,7 @@ class GameScene extends egret.DisplayObjectContainer {
     }
 
     private drawLine(fromCell: Cell, toCell: Cell) {
-        var lineTexture = RES.getRes("line_png");
+        var lineTexture = RES.getRes("line");
         var line = new eui.Image();
         line.texture = lineTexture;
         line.anchorOffsetX = 0;

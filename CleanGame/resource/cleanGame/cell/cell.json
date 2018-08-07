@@ -1,0 +1,8 @@
+{"file":"cell.png","frames":{
+"line":{"x":224,"y":0,"w":10,"h":22,"offX":0,"offY":0,"sourceW":10,"sourceH":22},
+"num1":{"x":112,"y":224,"w":110,"h":110,"offX":0,"offY":0,"sourceW":110,"sourceH":110},
+"num2":{"x":0,"y":224,"w":110,"h":110,"offX":0,"offY":0,"sourceW":110,"sourceH":110},
+"num3":{"x":112,"y":112,"w":110,"h":110,"offX":0,"offY":0,"sourceW":110,"sourceH":110},
+"num4":{"x":0,"y":112,"w":110,"h":110,"offX":0,"offY":0,"sourceW":110,"sourceH":110},
+"num5":{"x":112,"y":0,"w":110,"h":110,"offX":0,"offY":0,"sourceW":110,"sourceH":110},
+"num6":{"x":0,"y":0,"w":110,"h":110,"offX":0,"offY":0,"sourceW":110,"sourceH":110}}}

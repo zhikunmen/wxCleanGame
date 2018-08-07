@@ -44,7 +44,7 @@ class Main extends eui.UILayer {
         egret.lifecycle.onResume = () => {
             egret.ticker.resume();
         }
-
+        egret.ImageLoader.crossOrigin = "anonymous"
         //inject the custom material parser
         //注入自定义的素材解析器
         let assetAdapter = new AssetAdapter();
