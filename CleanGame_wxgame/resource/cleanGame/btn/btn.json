@@ -1,0 +1,10 @@
+{"file":"btn.png","frames":{
+"open_btn_sound_off":{"x":112,"y":264,"w":64,"h":62,"offX":0,"offY":0,"sourceW":64,"sourceH":62},
+"open_btn_st":{"x":0,"y":0,"w":192,"h":195,"offX":0,"offY":0,"sourceW":192,"sourceH":196},
+"reborn_timer":{"x":0,"y":197,"w":110,"h":111,"offX":0,"offY":0,"sourceW":110,"sourceH":112},
+"selet_add":{"x":180,"y":261,"w":64,"h":62,"offX":0,"offY":0,"sourceW":64,"sourceH":62},
+"win_btn_menu":{"x":194,"y":88,"w":43,"h":42,"offX":0,"offY":0,"sourceW":44,"sourceH":42},
+"win_btn_next":{"x":194,"y":0,"w":58,"h":37,"offX":0,"offY":0,"sourceW":58,"sourceH":38},
+"win_btn_retry":{"x":194,"y":39,"w":44,"h":47,"offX":0,"offY":0,"sourceW":44,"sourceH":48},
+"btn_close":{"x":112,"y":197,"w":66,"h":65,"offX":0,"offY":0,"sourceW":66,"sourceH":66},
+"open_btn_sound":{"x":180,"y":197,"w":64,"h":62,"offX":0,"offY":0,"sourceW":64,"sourceH":62}}}
