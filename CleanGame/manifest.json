@@ -53,7 +53,7 @@
 		"bin-debug/libTMX/utils/TMXUtils.js",
 		"bin-debug/module/chat/ChatItem.js",
 		"bin-debug/module/chat/ChatScene.js",
-		"bin-debug/util/Util.js",
+		"bin-debug/LoadingUI.js",
 		"bin-debug/module/game/CellMgr.js",
 		"bin-debug/module/game/CleanWithLineGameScene.js",
 		"bin-debug/module/game/GameCfg.js",
@@ -94,6 +94,6 @@
 		"bin-debug/util/NetLayerUtil.js",
 		"bin-debug/util/ScreenMgr.js",
 		"bin-debug/util/Tips.js",
-		"bin-debug/LoadingUI.js"
+		"bin-debug/util/Util.js"
 	]
 }

@@ -126,8 +126,10 @@ var Main = (function (_super) {
                         _a.trys.push([0, 4, , 5]);
                         loadingView = new LoadingUI();
                         this.stage.addChild(loadingView);
-                        return [4 /*yield*/, RES.loadConfig("resource/default.res.json", "resource/")];
+                        // await RES.loadConfig("resource/default.res.json", "resource/");
+                        return [4 /*yield*/, RES.loadConfig("default.res.json", GameData.sourceUrl)];
                     case 1:
+                        // await RES.loadConfig("resource/default.res.json", "resource/");
                         _a.sent();
                         return [4 /*yield*/, this.loadTheme()];
                     case 2:

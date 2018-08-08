@@ -21,7 +21,7 @@ class GameScene extends egret.DisplayObjectContainer {
 
     //////////////////////tiled////////////////////////////////////////////////
     private onLoadMap() {
-        var url: string = "http://114.119.6.83/mj_h5_dev/lobby/guangdong-jipinghu/cleanGame/map1.xml";
+        var url: string = GameData.sourceUrl + "cleanGame/tmx/map1.xml";
         // var urlLoader: egret.URLLoader = new egret.URLLoader();
         // urlLoader.dataFormat = egret.URLLoaderDataFormat.TEXT;
         // urlLoader.addEventListener(egret.Event.COMPLETE, function (event: egret.Event): void {

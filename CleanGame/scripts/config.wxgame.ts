@@ -2,7 +2,7 @@
 ///<reference path="api.d.ts"/>
 
 import * as path from 'path';
-import { UglifyPlugin, CompilePlugin, ManifestPlugin, ExmlPlugin, EmitResConfigFilePlugin, TextureMergerPlugin, CleanPlugin } from 'built-in';
+import { UglifyPlugin, CompilePlugin, ManifestPlugin, ExmlPlugin, EmitResConfigFilePlugin, TextureMergerPlugin, CleanPlugin,ResSplitPlugin } from 'built-in';
 import { WxgamePlugin } from './wxgame/wxgame';
 import { CustomPlugin } from './myplugin';
 import * as defaultConfig from './config';
@@ -34,10 +34,18 @@ const config: ResourceManagerConfig = {
                     new ExmlPlugin('commonjs'), // 非 EUI 项目关闭此设置
                     new WxgamePlugin(),
                     new UglifyPlugin([{
-                        sources: ["main.js"],
-                        target: "main.min.js"
-                    }
-                    ]),
+                      sources: ["main.js"],
+                      target: "main.min.js"
+                  },{
+                      sources: ["resource/default.thm.js"],
+                      target: "default.thm.min.js"
+                  }
+                  ]),
+                  new ResSplitPlugin({
+                      matchers:[
+                          {from:"resource/cleanGame",to:`../${projectName}_wxgame_remote`}
+                      ]
+                  }),
                     new ManifestPlugin({ output: 'manifest.js' })
                 ]
             }

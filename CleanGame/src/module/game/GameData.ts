@@ -6,6 +6,7 @@ class GameData {
     public static targetScore:number = 0;
     public static isOver:boolean = false;
     public static isWin:boolean = false;
+    public static sourceUrl : string = "https://h5.publish.1stgame.cn/mahjong_native_test/dongbei-jilin/resource/";
 
     public static reset() {
         this.enterLv = 0;
@@ -30,7 +31,7 @@ class GameData {
     }
 }
 enum GameState {
-    DealLogic,// ´¦ÀíÓÎÏ·Âß¼­ÖÐ
-    Play//ÍæÓÎÏ·ÖÐ
+    DealLogic,// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ß¼ï¿½ï¿½ï¿½
+    Play//ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½
 }
 ;
