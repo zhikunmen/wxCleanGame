@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<e:Skin class="GameUISkin" width="640" height="960" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:ns1="*">
+	<e:Group width="641.33" height="129.33" x="-3" y="-9" anchorOffsetY="0" anchorOffsetX="0">
+		<e:Image id="top" source="game_top_png" x="3" y="9" scaleX="1" scaleY="1"/>
+		<e:Image id="pauseBtn" source="game_btn_pause_png" x="561" y="16" scaleX="1" scaleY="1"/>
+		<e:Image source="game_star_progress_off_png" y="94" horizontalCenter="0" x="103" scaleX="1" scaleY="1"/>
+		<e:Image source="game_step_png" x="295" y="13" scaleX="1" scaleY="1"/>
+		<e:ProgressBar id="progress" y="100" skinName="GameProgressSkin" value="50" horizontalCenter="0" x="123" scaleX="1" scaleY="1"/>
+		<e:Image id="star1" source="game_rate1_off_png" x="219" y="80" scaleX="1" scaleY="1"/>
+		<e:Image id="star3" x="462" y="80" source="game_rate3_off_png" scaleX="1" scaleY="1"/>
+		<e:Image id="star2" source="game_rate2_off_png" x="341" y="80" scaleX="1" scaleY="1"/>
+		<e:Image source="score_png" x="460" y="12" scaleX="1" scaleY="1"/>
+		<e:BitmapLabel id="stepScore" y="41" font="num1_fnt" text="0" horizontalCenter="0" x="310" scaleX="1" scaleY="1"/>
+		<e:BitmapLabel id="targetScore" y="44" text="0" font="num2_fnt" x="84" scaleX="1" scaleY="1"/>
+		<e:BitmapLabel id="score" y="44" text="0" font="num2_fnt" x="455" scaleX="1" scaleY="1"/>
+		<e:Image source="game_target_title_png" x="84" y="12" width="113" height="32" scaleX="1" scaleY="1"/>
+	</e:Group>
+	<e:Group width="630.3" height="96.97" x="3" anchorOffsetY="0" anchorOffsetX="0" bottom="-1">
+		<e:Image source="foot_bg_png" x="-3" bottom="0" y="6.000000000000114" scaleX="1" scaleY="1"/>
+		<e:Image source="buy_coin1_png" x="404" y="25" scaleX="1" scaleY="1"/>
+		<e:BitmapLabel id="lv" y="42" text="3" font="num1_fnt" x="108" scaleX="1" scaleY="1"/>
+		<e:Image source="game_level_png" x="30" y="38.000000000000114" scaleX="1" scaleY="1"/>
+		<e:BitmapLabel id="gold" x="481" y="45.000000000000114" font="num2_fnt" text="111111" scaleX="1" scaleY="1"/>
+	</e:Group>
+</e:Skin>
