@@ -1,0 +1,9 @@
+{
+  "LoginUrl": "https://login-test.gamelaoyou.com/httplogin",
+  "GameID": 4210,
+  "ZoneID": 302,
+  "testUserId": 10,
+  "debug": 0,
+  "cdnPath": "",
+  "gameVersion": "1.0"
+}

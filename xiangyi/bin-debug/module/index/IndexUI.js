@@ -29,3 +29,4 @@ var IndexUI = (function (_super) {
     return IndexUI;
 }(eui.Component));
 __reflect(IndexUI.prototype, "IndexUI");
+//# sourceMappingURL=IndexUI.js.map

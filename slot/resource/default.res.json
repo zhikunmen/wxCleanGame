@@ -1,0 +1,176 @@
+{
+	"groups": [
+		{
+			"keys": "lhj_config_json,lhj_bg_1_jpg,lhj_effect_flower_ske_json,lhj_effect_flower_tex_png,lhj_effect_flower_tex_json,lhj_effect_logo_1_ske_json,lhj_effect_logo_1_tex_png,lhj_effect_logo_1_tex_json,lhj_effect_logo_2_ske_json,lhj_effect_logo_2_tex_png,lhj_effect_logo_2_tex_json,lhj_effect_logo_3_ske_json,lhj_effect_logo_3_tex_png,lhj_effect_logo_3_tex_json,lhj_effect_logo_4_ske_json,lhj_effect_logo_4_tex_png,lhj_effect_logo_4_tex_json,lhj_effect_logo_5_ske_json,lhj_effect_logo_5_tex_png,lhj_effect_logo_5_tex_json,lhj_effect_logo_12_ske_json,lhj_effect_logo_12_tex_png,lhj_effect_logo_12_tex_json,lhj_effect_logo_13_ske_json,lhj_effect_logo_13_tex_png,lhj_effect_logo_13_tex_json,lhj_effect_bg_ske_json,lhj_effect_bg_tex_json,lhj_effect_bg_tex_png,lhj_game_res_1_json,lhj_effect_logo_6_ske_json,lhj_effect_logo_6_tex_png,lhj_effect_logo_6_tex_json",
+			"name": "lhj"
+		}
+	],
+	"resources": [
+		{
+			"name": "lhj_config_json",
+			"type": "json",
+			"url": "config/lhj_config.json"
+		},
+		{
+			"name": "lhj_bg_1_jpg",
+			"type": "image",
+			"url": "assets/selfGame/resource/lhj_bg_1.jpg"
+		},
+		{
+			"name": "lhj_effect_flower_ske_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_flower_ske.json"
+		},
+		{
+			"name": "lhj_effect_flower_tex_png",
+			"type": "image",
+			"url": "assets/selfGame/effect/lhj_effect_flower_tex.png"
+		},
+		{
+			"name": "lhj_effect_flower_tex_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_flower_tex.json"
+		},
+		{
+			"name": "lhj_effect_logo_1_ske_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_1_ske.json"
+		},
+		{
+			"name": "lhj_effect_logo_1_tex_png",
+			"type": "image",
+			"url": "assets/selfGame/effect/lhj_effect_logo_1_tex.png"
+		},
+		{
+			"name": "lhj_effect_logo_1_tex_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_1_tex.json"
+		},
+		{
+			"name": "lhj_effect_logo_2_ske_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_2_ske.json"
+		},
+		{
+			"name": "lhj_effect_logo_2_tex_png",
+			"type": "image",
+			"url": "assets/selfGame/effect/lhj_effect_logo_2_tex.png"
+		},
+		{
+			"name": "lhj_effect_logo_2_tex_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_2_tex.json"
+		},
+		{
+			"name": "lhj_effect_logo_3_ske_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_3_ske.json"
+		},
+		{
+			"name": "lhj_effect_logo_3_tex_png",
+			"type": "image",
+			"url": "assets/selfGame/effect/lhj_effect_logo_3_tex.png"
+		},
+		{
+			"name": "lhj_effect_logo_3_tex_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_3_tex.json"
+		},
+		{
+			"name": "lhj_effect_logo_4_ske_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_4_ske.json"
+		},
+		{
+			"name": "lhj_effect_logo_4_tex_png",
+			"type": "image",
+			"url": "assets/selfGame/effect/lhj_effect_logo_4_tex.png"
+		},
+		{
+			"name": "lhj_effect_logo_4_tex_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_4_tex.json"
+		},
+		{
+			"name": "lhj_effect_logo_5_ske_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_5_ske.json"
+		},
+		{
+			"name": "lhj_effect_logo_5_tex_png",
+			"type": "image",
+			"url": "assets/selfGame/effect/lhj_effect_logo_5_tex.png"
+		},
+		{
+			"name": "lhj_effect_logo_5_tex_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_5_tex.json"
+		},
+		{
+			"name": "lhj_effect_logo_12_ske_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_12_ske.json"
+		},
+		{
+			"name": "lhj_effect_logo_12_tex_png",
+			"type": "image",
+			"url": "assets/selfGame/effect/lhj_effect_logo_12_tex.png"
+		},
+		{
+			"name": "lhj_effect_logo_12_tex_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_12_tex.json"
+		},
+		{
+			"name": "lhj_effect_logo_13_ske_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_13_ske.json"
+		},
+		{
+			"name": "lhj_effect_logo_13_tex_png",
+			"type": "image",
+			"url": "assets/selfGame/effect/lhj_effect_logo_13_tex.png"
+		},
+		{
+			"name": "lhj_effect_logo_13_tex_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_13_tex.json"
+		},
+		{
+			"name": "lhj_effect_bg_ske_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_bg_ske.json"
+		},
+		{
+			"name": "lhj_effect_bg_tex_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_bg_tex.json"
+		},
+		{
+			"name": "lhj_effect_bg_tex_png",
+			"type": "image",
+			"url": "assets/selfGame/effect/lhj_effect_bg_tex.png"
+		},
+		{
+			"name": "lhj_game_res_1_json",
+			"type": "sheet",
+			"url": "assets/selfGame/resource/lhj_game_res_1.json",
+			"subkeys": "lhj_info_frame,lhj_left_logo,lhj_logo_1,lhj_logo_2,lhj_logo_3,lhj_logo_4,lhj_logo_5,lhj_logo_6,lhj_logo_7,lhj_logo_8,lhj_logo_9,lhj_logo_10,lhj_logo_11,lhj_logo_12,lhj_logo_13,lhj_open_bg,lhj_text_bg,lhj_text_chip,lhj_text_income,lhj_text_run,lhj_bg_2,lhj_btn_auto_1,lhj_btn_auto_2,lhj_btn_close_1,lhj_btn_close_2,lhj_btn_down_1,lhj_btn_down_2,lhj_btn_down_3,lhj_btn_max_1,lhj_btn_max_2,lhj_btn_more_1,lhj_btn_more_2,lhj_btn_open_1,lhj_btn_open_2,lhj_btn_start_1,lhj_btn_start_2,lhj_btn_stop_1,lhj_btn_stop_2,lhj_btn_up_1,lhj_btn_up_2,lhj_btn_up_3,lhj_close_bg"
+		},
+		{
+			"name": "lhj_effect_logo_6_ske_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_6_ske.json"
+		},
+		{
+			"name": "lhj_effect_logo_6_tex_png",
+			"type": "image",
+			"url": "assets/selfGame/effect/lhj_effect_logo_6_tex.png"
+		},
+		{
+			"name": "lhj_effect_logo_6_tex_json",
+			"type": "json",
+			"url": "assets/selfGame/effect/lhj_effect_logo_6_tex.json"
+		}
+	]
+}

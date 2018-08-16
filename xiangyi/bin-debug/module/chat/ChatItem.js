@@ -22,3 +22,4 @@ var ChatItem = (function (_super) {
     return ChatItem;
 }(eui.Component));
 __reflect(ChatItem.prototype, "ChatItem");
+//# sourceMappingURL=ChatItem.js.map

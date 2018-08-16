@@ -49,3 +49,4 @@ var Fish = (function (_super) {
     return Fish;
 }(eui.Component));
 __reflect(Fish.prototype, "Fish");
+//# sourceMappingURL=Fish.js.map

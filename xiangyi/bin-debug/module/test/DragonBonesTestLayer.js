@@ -36,3 +36,4 @@ var DragonBonesTestLayer = (function (_super) {
     return DragonBonesTestLayer;
 }(egret.DisplayObjectContainer));
 __reflect(DragonBonesTestLayer.prototype, "DragonBonesTestLayer");
+//# sourceMappingURL=DragonBonesTestLayer.js.map

@@ -330,3 +330,4 @@ var tiled;
     tiled.TMXLayer = TMXLayer;
     __reflect(TMXLayer.prototype, "tiled.TMXLayer");
 })(tiled || (tiled = {}));
+//# sourceMappingURL=TMXLayer.js.map

@@ -28,6 +28,7 @@ var GameData = (function () {
     GameData.targetScore = 0;
     GameData.isOver = false;
     GameData.isWin = false;
+    GameData.sourceUrl = "https://h5.publish.1stgame.cn/mahjong_native_test/dongbei-jilin/resource/";
     return GameData;
 }());
 __reflect(GameData.prototype, "GameData");
@@ -37,3 +38,4 @@ var GameState;
     GameState[GameState["Play"] = 1] = "Play"; //����Ϸ��
 })(GameState || (GameState = {}));
 ;
+//# sourceMappingURL=GameData.js.map

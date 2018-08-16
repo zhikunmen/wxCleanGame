@@ -35,3 +35,4 @@ var Cannon = (function (_super) {
     return Cannon;
 }(eui.Component));
 __reflect(Cannon.prototype, "Cannon");
+//# sourceMappingURL=Cannon.js.map

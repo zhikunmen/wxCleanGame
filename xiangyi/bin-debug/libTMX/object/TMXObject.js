@@ -270,3 +270,4 @@ var tiled;
     tiled.TMXObject = TMXObject;
     __reflect(TMXObject.prototype, "tiled.TMXObject");
 })(tiled || (tiled = {}));
+//# sourceMappingURL=TMXObject.js.map

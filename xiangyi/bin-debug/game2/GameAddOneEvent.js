@@ -23,3 +23,4 @@ var GameAddOneEvent = (function (_super) {
     return GameAddOneEvent;
 }(egret.Event));
 __reflect(GameAddOneEvent.prototype, "GameAddOneEvent");
+//# sourceMappingURL=GameAddOneEvent.js.map

@@ -179,3 +179,4 @@ var tiled;
     tiled.TMXTile = TMXTile;
     __reflect(TMXTile.prototype, "tiled.TMXTile");
 })(tiled || (tiled = {}));
+//# sourceMappingURL=TMXTile.js.map

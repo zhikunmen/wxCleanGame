@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="MorePanelSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >  
+	<e:Panel id="container" x="0" y="0">
+    <e:Image  x="94" y="10" source="dt_more_bg"/>
+    <e:Image id="exitBg" source="hlhyg_more_bg_1"  x="94" y="10" visible="false"/>
+    <e:Image id="helpBg" source="hlhyg_more_bg_3"  x="94" y="10" visible="false"/>
+	<e:Image id="setBg" source="hlhyg_more_bg_2" x="94" y="10" visible="false"/>
+    <e:Image source="hlhyg_more_exit" x="128" y="31"/>
+    <e:Image source="hlhyg_more_horn" x="128" y="111"/>
+    <e:Image source="hlhyg_more_help" x="128" y="191"/>
+    <e:Label text="退出房间" x="180" y="36.5" size="30"/>
+    <e:Label text="音量设置" x="180" y="116.5" size="30"/>
+    <e:Label text="游戏帮助" x="180" y="196.5" size="30"/>
+    <e:Label id="exitTxt" text="        " x="115" y="14.5" size="30" width="202" height="73" touchEnabled="true" anchorOffsetY="0"/>
+    <e:Label id="setTxt" text="        " x="115" y="91.5" size="30" width="202" height="76" touchEnabled="true" anchorOffsetY="0"/>
+    <e:Label id="helpTxt" text="        " x="115" y="172.5" size="30" anchorOffsetX="0" width="202" anchorOffsetY="0" height="80" touchEnabled="true"/>
+    </e:Panel>   
+</e:Skin>

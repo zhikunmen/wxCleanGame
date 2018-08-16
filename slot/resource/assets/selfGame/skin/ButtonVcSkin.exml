@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="ButtonVcSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+<!--<e:Image source="lhj_bg_jpg"/>
+<e:Image source="lhj_bg_2" width="1280" x="1" y="550"/>-->
+<e:Image source="lhj_text_chip" x="420" y="634"/>
+<e:Image source="lhj_text_income" x="635" y="634"/>
+<e:Image source="lhj_text_run" x="790" y="634"/>
+<e:Image source="lhj_text_bg" x="395" y="660"/>
+<e:Image source="lhj_text_bg" x="609.5" y="660"/>
+	<e:Button id="moreBtn"  x="20" y="636">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="lhj_btn_more_1" source.down="lhj_btn_more_2"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="upBtn"  x="517" y="660">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="lhj_btn_up_1" source.down="lhj_btn_up_2" source.disabled="lhj_btn_up_3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="downBtn"  x="338" y="660">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="lhj_btn_down_1" source.down="lhj_btn_down_2" source.disabled="lhj_btn_down_3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="maxBtn"  x="925" y="648.5">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="lhj_btn_max_1" source.down="lhj_btn_max_2"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="startBtn"  x="1080" y="560">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="lhj_btn_start_1" source.down="lhj_btn_start_2"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image id="speed_bg" source="lhj_open_bg" x="795" y="672"/>
+	<e:Button id="addBtn"  x="838.5" y="666">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="lhj_btn_open_1" source.down="lhj_btn_open_2" source.disabled=""/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="reduceBtn"  x="785.5" y="666" visible="false">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="lhj_btn_close_1" source.down="lhj_btn_close_2"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="stopBtn"  x="1080" y="560" visible="false">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="lhj_btn_stop_1" source.down="lhj_btn_stop_2"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="AutoBtn"  x="1080" y="560" visible="false">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="lhj_btn_auto_1" source.down="lhj_btn_auto_2"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Label id="chipsTxt" text="--" textColor="0xffffff" size="22" fontFamily="Microsoft YaHei" width="99" x="417" y="674" anchorOffsetX="0" textAlign="center"/>
+</e:Skin>

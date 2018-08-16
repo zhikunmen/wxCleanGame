@@ -42,3 +42,4 @@ var ClickButton = (function (_super) {
     return ClickButton;
 }(eui.Component));
 __reflect(ClickButton.prototype, "ClickButton");
+//# sourceMappingURL=ClickButton.js.map

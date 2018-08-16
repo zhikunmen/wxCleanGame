@@ -21,3 +21,4 @@ var CleanWithLineGameScene = (function (_super) {
     return CleanWithLineGameScene;
 }(eui.Component));
 __reflect(CleanWithLineGameScene.prototype, "CleanWithLineGameScene");
+//# sourceMappingURL=CleanWithLineGameScene.js.map

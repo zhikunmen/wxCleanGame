@@ -25,7 +25,7 @@ var GameScene = (function (_super) {
     //////////////////////tiled////////////////////////////////////////////////
     GameScene.prototype.onLoadMap = function () {
         var _this = this;
-        var url = "http://114.119.6.83/mj_h5_dev/lobby/guangdong-jipinghu/cleanGame/map1.xml";
+        var url = GameData.sourceUrl + "cleanGame/tmx/map1.xml";
         // var urlLoader: egret.URLLoader = new egret.URLLoader();
         // urlLoader.dataFormat = egret.URLLoaderDataFormat.TEXT;
         // urlLoader.addEventListener(egret.Event.COMPLETE, function (event: egret.Event): void {
@@ -498,3 +498,4 @@ var GameScene = (function (_super) {
     return GameScene;
 }(egret.DisplayObjectContainer));
 __reflect(GameScene.prototype, "GameScene");
+//# sourceMappingURL=GameScene.js.map

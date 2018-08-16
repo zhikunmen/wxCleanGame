@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SuperSlot_HelpSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:SZLobby="SZLobby.*" >
+	<e:Image x="640" y="360" source="ss_common_bg_png" width="1007" height="572" anchorOffsetX="503.5" anchorOffsetY="286" scale9Grid="85,80,36,36"/>
+    <e:Image x="640" y="70" source="ss_help_titile_png" anchorOffsetX="140" anchorOffsetY="58"/>
+	<e:Image x="640" y="384" source="ss_help_bg_png" fillMode="scale" scale9Grid="94,72,45,45" width="894" height="402" anchorOffsetX="447" anchorOffsetY="201"/>
+    <e:Image id="gameRule_1" x="369" y="130" source="ss_gameRule_1_png"/>
+    <e:Image id="gameRule_2" x="369" y="130" source="ss_gameRule_2_png" visible="false"/>
+    <e:Image id="gameExplain_1" x="632" y="130" source="ss_gameExplain_1_png"/>
+    <e:Image id="gameExplain_2" x="632" y="130" source="ss_gameExplain_2_png"/>
+	<SZLobby:BaseButton id="closeBtn" label="" x="1158" y="100" anchorOffsetX="60" anchorOffsetY="49.33">
+		<SZLobby:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_closebtn_1_png" source.down="ss_closebtn_2_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</SZLobby:skinName>
+
+	</SZLobby:BaseButton>
+
+    <e:Scroller id="helpScroll_rule" width="894" height="402" x="640" y="384" anchorOffsetX="447" anchorOffsetY="201">
+		<e:Skin>
+			<e:VScrollBar id="verticalScrollBar" width="20" height="100%" right="0">
+				<e:Skin>
+					<e:Image width="100%" height="100%" source="track_png" scale9Grid="1,1,4,4"/>
+					<e:Image id="thumb" width="20" height="30" source="thumb_png"  scale9Grid="1,1,4,4"/>
+				</e:Skin>
+			</e:VScrollBar>
+		</e:Skin>
+		<e:Group id="helpGroup_rule" width="894" height="402" x="0" y="0">
+			<e:Label text="游戏分为3个阶段：" size="24" y="26" x="42" fontFamily="Microsoft YaHei" textColor="0x683021"/>
+			<e:Label text="1、下注：在规定时间内，玩家可以自由选择下注物品和下注筹码" size="24" x="42" y="60" fontFamily="Microsoft YaHei" textColor="0x683021"/>
+			<e:Label text="2、开奖：游戏中设置了由24个格子组成的矩形，每个格子中有一个元素，一个" size="24" x="42" y="90" fontFamily="Microsoft YaHei" textColor="0x683021"/>
+			<e:Label text="光圈围绕矩形旋转，最终停在一个格子上" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="120"/>
+			<e:Label text="3、结算：光圈停止在哪个格子上，其中的元素即为本轮开奖结果，若玩家下注" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="150"/>
+			<e:Label text="正确，则获得奖励，若下注错误，则扣除下注金币。" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="180"/>
+			<e:Label text="下注物品：" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="234"/>
+			<e:Label text="总共有8种物品可以下注（苹果、橘子、芒果、铃铛、西瓜、星星、77、BAR）" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="263"/>
+			<e:Label text="，物品的赔率由小到大有所不同。" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="291.34"/>
+			<e:Label text="中奖方法：" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="348" textAlign="left"/>
+			<e:Label text="正常情况下，转盘停止的位置为8种下注物品之一，如果玩家下注了该物品，则" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="380"/>
+			<e:Label text="按照其倍率获得对应的奖励金币；特殊情况下，转盘停止的位置为“LUCK”或" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="410"/>
+			<e:Label text="者触发了特殊奖，则根据情况进行特殊处理。" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="440"/>
+			<e:Label text="特殊奖励：" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="504"/>
+			<e:Label text="红色LUCK、蓝色LUCK、BAR会触发特殊奖励" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="534"/>
+			<!--<e:Label text="大三元的特殊奖励" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="564"/>
+			<e:Label text="大四喜：触发即中四个大苹果，倍率为单个苹果的4倍；" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="592"/>
+			<e:Label text="小三元：橘子、芒果、铃铛，顺序随机，中任意一个都能赢得对应奖励；" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="620"/>
+			<e:Label text="大三元：西瓜、星星、77，顺序随机，中任意一个都能赢得对应奖励" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="650"/>
+			<e:Label text="2、BAR" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="680"/>
+			<e:Label text="中 50 倍小BAR：额外在铃铛、芒果、橙子中随机映射2个" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="709"/>
+			<e:Label text="中100倍大BAR：额外77、星星、西瓜中随机映射1个，铃铛、芒果、橙子中再" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="740"/>
+			<e:Label text="映射1个" fontFamily="Microsoft YaHei" textColor="0x683021" size="24" x="42" y="770"/>-->
+		</e:Group>
+	</e:Scroller>
+	<e:Scroller id="helpScroll_explain" width="894" height="402" x="640" y="384" anchorOffsetX="447" anchorOffsetY="201" scrollPolicyH="off" scrollPolicyV="on" visible="false">
+		<e:Skin>
+			<e:VScrollBar id="verticalScrollBar" width="20" height="100%" right="0">
+				<e:Skin>
+					<e:Image width="100%" height="100%" source="track_png" scale9Grid="1,1,4,4"/>
+					<e:Image id="thumb" width="20" height="30" source="thumb_png"  scale9Grid="1,1,4,4"/>
+				</e:Skin>
+			</e:VScrollBar>
+		</e:Skin>
+		<e:Group id="helpGroup1_explain" width="894" height="465" x="0" y="0">
+			<e:Image width="867" height="510" x="447" y="0" scaleX="1" scaleY="1" source="ss_help_explain_png" anchorOffsetX="433.5"/>
+		</e:Group>
+	</e:Scroller>
+</e:Skin>

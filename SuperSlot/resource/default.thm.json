@@ -1,0 +1,13 @@
+{
+	"skins": {},
+	"autoGenerateExmlsList": true,
+	"exmls": [
+		"resource/skin/SuperSlot_HelpSkin.exml",
+		"resource/skin/SuperSlot_LotteryHistoryItem.exml",
+		"resource/skin/SuperSlot_MainViewSkin.exml",
+		"resource/skin/SuperSlot_SettingSkin.exml",
+		"resource/skin/SuperSlot_SizeHistoryItem.exml",
+		"resource/skin/VScrollBarSkin.exml"
+	],
+	"path": "resource/default.thm.json"
+}

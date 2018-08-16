@@ -32,3 +32,4 @@ var RectangleShapData = (function () {
     return RectangleShapData;
 }());
 __reflect(RectangleShapData.prototype, "RectangleShapData");
+//# sourceMappingURL=ShapData.js.map

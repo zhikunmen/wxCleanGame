@@ -32,3 +32,4 @@ var Animation = (function () {
     return Animation;
 }());
 __reflect(Animation.prototype, "Animation");
+//# sourceMappingURL=Animation.js.map

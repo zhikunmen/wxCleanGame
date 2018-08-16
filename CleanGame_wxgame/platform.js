@@ -34,6 +34,10 @@ class WxgamePlatform {
         })
     }
 
+    showShareMenu(){
+      return new wx.showShareMenu({});
+    }
+
     openDataContext = new WxgameOpenDataContext();
 }
 

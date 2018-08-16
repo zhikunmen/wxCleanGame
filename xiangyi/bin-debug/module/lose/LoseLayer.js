@@ -30,3 +30,4 @@ var LoseLayer = (function (_super) {
     return LoseLayer;
 }(eui.Component));
 __reflect(LoseLayer.prototype, "LoseLayer");
+//# sourceMappingURL=LoseLayer.js.map

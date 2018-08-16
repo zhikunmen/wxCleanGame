@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="dt_GuideSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<w:Config id="1643fc984d7"/>
+	<e:Group id="guide_1">
+		<e:Rect width="1280" height="720" alpha="0.7" fillColor="0x050000"/>
+		<e:Image source="dt_guide_3" x="416" y="195" scale9Grid="17,129,41,69" anchorOffsetX="0" width="474"/>
+		<e:Label text="亲爱的主人！欢迎您来到五星宏辉房间" textColor="0xffffff" x="448" y="319" size="24" textAlign="left" fontFamily="Microsoft YaHei" width="280"/>
+	</e:Group>
+	<e:Group id="guide_2" visible="false">
+		<e:Rect width="1280" height="720" alpha="0.7" fillColor="0x050000"/>
+		<e:Image source="dt_guide_3" x="416" y="195" scale9Grid="17,129,41,69" anchorOffsetX="0" width="474"/>
+		<e:Label text="让我来简单介绍一下牌桌吧。" textColor="0xffffff" x="462" y="305.5" size="24" textAlign="left" fontFamily="Microsoft YaHei" width="272" anchorOffsetX="0"/>
+	</e:Group>
+	<e:Group id="guide_3" visible="false">
+		<e:Image source="dt_guide_4" width="1281"/>
+		<e:Image source="dt_guide_5" x="919" y="533"/>
+		<e:Image source="dt_guide_6" x="640" y="548" anchorOffsetX="0" width="377" scale9Grid="13,12,9,9" anchorOffsetY="0" height="76"/>
+		<e:Label text="上面的椭圆形区域就是下注区哦，点击这里就可以下注啦！" textColor="0xffffff" x="671.5" y="562" size="24" textAlign="left" fontFamily="Microsoft YaHei" width="314" anchorOffsetX="0"/>
+	</e:Group>
+	<e:Group id="guide_4" visible="false">
+		<e:Image source="dt_guide_2" width="1282"/>
+		<e:Image source="dt_guide_5" x="714" y="545" scaleY="-1"/>
+		<e:Image source="dt_guide_6" x="445.5" y="450" anchorOffsetX="0" width="332" scale9Grid="13,12,9,9" anchorOffsetY="0" height="80"/>
+		<e:Label text="这里的小图标就是之前的开奖历史记录哦！" textColor="0xffffff" x="470" y="466" size="24" textAlign="left" fontFamily="Microsoft YaHei" width="294" anchorOffsetX="0"/>
+	</e:Group>
+	<e:Group id="guide_5" visible="false">
+		<e:Image source="dt_guide_1" width="1281"/>
+		<e:Image source="dt_guide_5" x="940" y="599" scaleY="-1"/>
+		<e:Image source="dt_guide_6" x="598" y="508" anchorOffsetX="0" width="439" scale9Grid="13,12,9,9" anchorOffsetY="0" height="76"/>
+		<e:Label text="这里的按钮就是筹码啦，点击即可选择筹码，现在来试试吧。" textColor="0xffffff" x="632" y="522" size="24" textAlign="left" fontFamily="Microsoft YaHei" width="371" anchorOffsetX="0"/>
+	</e:Group>
+	<e:Group id="guide_6" visible="false">
+		<e:Rect width="1280" height="720" alpha="0.7" fillColor="0x050000"/>
+		<e:Image source="dt_guide_3" x="416" y="195" scale9Grid="17,129,41,69" anchorOffsetX="0" width="474"/>
+		<e:Label text="好啦，就讲那么多哦，接下来就要看主人的啦。" textColor="0xffffff" x="450" y="312" size="24" textAlign="left" fontFamily="Microsoft YaHei" width="274" anchorOffsetX="0"/>
+	</e:Group>
+	<e:Group id="guide_7" visible="false">
+		<e:Rect width="1280" height="720" alpha="0.7" fillColor="0x050000"/>
+		<e:Image source="dt_guide_3" x="416" y="195" scale9Grid="17,129,41,69" anchorOffsetX="0" width="474"/>
+		<e:Label text="祝您游戏愉快！" textColor="0xffffff" x="515" y="324" size="24" textAlign="left" fontFamily="Microsoft YaHei" width="250" anchorOffsetX="0"/>
+	</e:Group>
+</e:Skin>

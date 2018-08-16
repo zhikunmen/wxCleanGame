@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="InfoVcSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui"
+        xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="lhj_info_frame" x="125" y="632.5" width="82" height="82" />
+	<e:Label id="nickTxt" text="--" x="215" y="635" size="16" textColor="0xfff000" />
+	<e:Label id="idTxt" text="--" x="215" y="655" size="16" textColor="0xffffff" fontFamily="Microsoft YaHei" />
+	<e:Label id="recordTxt" text="--" x="215" y="695" size="16" textColor="0xffffff" fontFamily="Microsoft YaHei" />
+	<e:Label id="chipsTxt" text="--" x="215" y="675" size="16" textColor="0xffffff" fontFamily="Microsoft YaHei" />
+	<e:Label id="incomeTxt" text="--" x="609.5" y="674" size="22" textColor="0xffffff" fontFamily="Microsoft YaHei"  anchorOffsetX="0" width="147" textAlign="center"/>
+</e:Skin>

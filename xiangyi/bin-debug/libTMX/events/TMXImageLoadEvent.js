@@ -43,3 +43,4 @@ var tiled;
     tiled.TMXImageLoadEvent = TMXImageLoadEvent;
     __reflect(TMXImageLoadEvent.prototype, "tiled.TMXImageLoadEvent");
 })(tiled || (tiled = {}));
+//# sourceMappingURL=TMXImageLoadEvent.js.map

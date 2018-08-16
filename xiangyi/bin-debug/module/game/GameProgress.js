@@ -18,3 +18,4 @@ var GameProgress = (function (_super) {
     return GameProgress;
 }(eui.Component));
 __reflect(GameProgress.prototype, "GameProgress");
+//# sourceMappingURL=GameProgress.js.map

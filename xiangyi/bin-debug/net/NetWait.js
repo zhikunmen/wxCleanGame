@@ -16,3 +16,4 @@ var NetWait = (function (_super) {
     return NetWait;
 }(eui.Component));
 __reflect(NetWait.prototype, "NetWait");
+//# sourceMappingURL=NetWait.js.map

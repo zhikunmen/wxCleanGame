@@ -58,13 +58,13 @@ class Main extends eui.UILayer {
         ScreenMgr.instance.designHeight = 1136;
     }
 
-    private async runGame() {
+    private async runGame(): Promise<void> {
         await this.loadResource()
         this.createGameScene();
         // await platform.login();
         const userInfo = await platform.getUserInfo();
         console.log(userInfo);
-
+        await platform.showShareMenu();
     }
 
     private async loadResource() {

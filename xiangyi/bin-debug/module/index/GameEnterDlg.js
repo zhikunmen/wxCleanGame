@@ -44,3 +44,4 @@ var GameEnterDlg = (function (_super) {
     return GameEnterDlg;
 }(eui.Component));
 __reflect(GameEnterDlg.prototype, "GameEnterDlg");
+//# sourceMappingURL=GameEnterDlg.js.map

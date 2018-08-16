@@ -49,3 +49,4 @@ var Tips = (function (_super) {
     return Tips;
 }(egret.DisplayObjectContainer));
 __reflect(Tips.prototype, "Tips");
+//# sourceMappingURL=Tips.js.map

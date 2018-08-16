@@ -1,0 +1,15 @@
+{
+	"autoGenerateExmlsList": true,
+	"exmls": [
+		"resource/assets/selfGame/skin/ButtonVcSkin.exml",
+		"resource/assets/selfGame/skin/FpcGuideSkin.exml",
+		"resource/assets/selfGame/skin/FpcHelpPanelSkin.exml",
+		"resource/assets/selfGame/skin/GameVcSkin.exml",
+		"resource/assets/selfGame/skin/InfoVcSkin.exml",
+		"resource/assets/selfGame/skin/LogoItemSkin.exml",
+		"resource/assets/selfGame/skin/MorePanelSkin.exml",
+		"resource/assets/selfGame/skin/winningChipSkin.exml"
+	],
+	"skins": {},
+	"path": "resource/default.thm.json"
+}

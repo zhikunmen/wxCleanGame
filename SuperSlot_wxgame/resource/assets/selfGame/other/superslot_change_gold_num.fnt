@@ -1,0 +1,12 @@
+{"file":"superslot_change_gold_num.png","frames":{
+"0":{"x":0,"y":0,"w":87,"h":109,"offX":0,"offY":0,"sourceW":87,"sourceH":109},
+"1":{"x":178,"y":0,"w":57,"h":108,"offX":15,"offY":1,"sourceW":87,"sourceH":109},
+"2":{"x":89,"y":330,"w":85,"h":108,"offX":1,"offY":1,"sourceW":87,"sourceH":109},
+"3":{"x":88,"y":111,"w":86,"h":109,"offX":0,"offY":0,"sourceW":87,"sourceH":109},
+"4":{"x":89,"y":222,"w":87,"h":106,"offX":0,"offY":2,"sourceW":87,"sourceH":109},
+"5":{"x":0,"y":222,"w":87,"h":107,"offX":0,"offY":1,"sourceW":87,"sourceH":109},
+"6":{"x":89,"y":0,"w":87,"h":109,"offX":0,"offY":0,"sourceW":87,"sourceH":109},
+"7":{"x":0,"y":331,"w":81,"h":106,"offX":3,"offY":2,"sourceW":87,"sourceH":109},
+"8":{"x":0,"y":111,"w":86,"h":109,"offX":0,"offY":0,"sourceW":87,"sourceH":109},
+",":{"x":178,"y":193,"w":36,"h":62,"offX":7,"offY":49,"sourceW":87,"sourceH":111},
+"+":{"x":178,"y":110,"w":73,"h":81,"offX":7,"offY":18,"sourceW":87,"sourceH":109}}}

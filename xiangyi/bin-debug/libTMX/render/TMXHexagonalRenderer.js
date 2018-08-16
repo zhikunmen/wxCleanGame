@@ -215,3 +215,4 @@ var tiled;
     tiled.TMXHexagonalRenderer = TMXHexagonalRenderer;
     __reflect(TMXHexagonalRenderer.prototype, "tiled.TMXHexagonalRenderer");
 })(tiled || (tiled = {}));
+//# sourceMappingURL=TMXHexagonalRenderer.js.map

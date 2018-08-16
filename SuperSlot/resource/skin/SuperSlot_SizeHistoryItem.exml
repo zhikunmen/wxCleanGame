@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SuperSlot_SizeHistoryItem" width="38" height="49" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+
+	<e:BitmapLabel id="_sizeValue" width="38" height="26" x="0" y="20" text="" textAlign="center" font="superslot_size_num_fnt"/>
+	<e:Image id="_newImage" width="33" height="12" x="3" y="0" source="ss_new" anchorOffsetX="0" anchorOffsetY="0" visible="false"/>
+</e:Skin>

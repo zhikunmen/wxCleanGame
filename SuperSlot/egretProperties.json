@@ -1,0 +1,55 @@
+{
+  "engineVersion": "5.2.6",
+  "compilerVersion": "5.2.6",
+  "template": {},
+  "target": {
+    "current": "web"
+  },
+  "eui": {
+    "exmlRoot": [
+      "resource/gameSkin"
+    ],
+    "themes": [
+      "resource/default.thm.json"
+    ],
+    "exmlPublishPolicy": "commonjs2"
+  },
+  "modules": [
+    {
+      "name": "egret"
+    },
+    {
+      "name": "eui"
+    },
+    {
+      "name": "assetsmanager"
+    },
+    {
+      "name": "tween"
+    },
+    {
+      "name": "game"
+    },
+    {
+      "name": "dragonBones"
+    },
+    {
+      "name": "socket"
+    },
+    {
+      "name": "promise"
+    },
+		{
+			"name": "pureMvc",
+			"path": "../../libsrc/pureMvc"
+		},
+		{
+			"name": "uniLib",
+			"path": "../../libsrc/uniLib-dev"
+		},
+		{
+			"name": "chessCommonLib",
+			"path": "../../libsrc/ChessCommonLib"
+		}
+  ]
+}

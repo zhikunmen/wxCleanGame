@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" class="SuperSlot_SettingSkin">
+	<w:Config id="164ac34b4c0"/>
+	<e:Image x="640" y="360" anchorOffsetX="363.5" width="727" anchorOffsetY="221" height="442" source="ss_common_bg_png" scale9Grid="100,81,74,74"/>
+
+	<e:Button id="closeBtn" label="" y="118" width="74" height="74" x="956">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_closebtn_1_png" source.down="ss_closebtn_2_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+	<e:Image id="title" y="148" source="ss_setting_titile_png" x="640" anchorOffsetX="140" anchorOffsetY="58"/>
+	<e:Label id="souEffTxt" text="音效" x="344" y="276" size="36" fontFamily="Microsoft YaHei" textColor="0x6d371b"/>
+	<e:Label id="musicTxt" text="音乐" x="344" y="386" size="36" fontFamily="Microsoft YaHei" textColor="0x6d371b"/>
+
+	<e:HSlider id="soundHS" width="433" height="36" x="429" y="280" maximum="100" anchorOffsetX="0" anchorOffsetY="0">
+		<e:skinName>
+			<e:Skin>
+				<e:Image id="track" x="0" y="2" width="433" verticalCenter="0" scale9Grid="18,17,22,1" source="ss_voice_bg_png"/>
+				<e:Image id="trackHighlight" height="32" anchorOffsetX="0" width="83" maxHeight="433" verticalCenter="0" x="5" y="0" scale9Grid="17,14,2,7" source="ss_voice_thumb_png"/>
+				<e:Image id="thumb" anchorOffsetX="28" x="58.5" width="56" anchorOffsetY="28" height="56" scaleX="1" scaleY="1" y="19" source="ss_voice_track_press1_png"/>
+			</e:Skin>
+		</e:skinName>
+	</e:HSlider>
+	<e:HSlider id="voiceHS" width="433" height="36" x="429" y="390" maximum="100">
+		<e:skinName>
+			<e:Skin>
+				<e:Image id="track" source="ss_voice_bg_png" x="0" y="2" width="433" verticalCenter="0" scale9Grid="18,17,22,1"/>
+				<e:Image id="trackHighlight" source="ss_voice_thumb_png" height="32" anchorOffsetX="0" width="83" maxHeight="433" verticalCenter="0" x="5" y="0" scale9Grid="17,14,2,7"/>
+				<e:Image id="thumb" source="ss_voice_track_press1_png" anchorOffsetX="28" x="58.5" width="56" anchorOffsetY="28" height="56" scaleX="1" scaleY="1" y="19"/>
+			</e:Skin>
+		</e:skinName>
+	</e:HSlider>
+	<e:CheckBox id="soundBtn" label="" x="875" y="266" anchorOffsetX="0" width="62" anchorOffsetY="0" height="62">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_sound_open_png" source.down="ss_sound_close_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:CheckBox>
+	<e:CheckBox id="voiceBtn" label="" x="875" y="374" width="62" height="62">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_music_open_png" source.down="ss_music_close_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:CheckBox>
+
+
+
+
+
+
+
+</e:Skin>

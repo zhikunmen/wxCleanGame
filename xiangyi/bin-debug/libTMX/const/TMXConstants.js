@@ -135,3 +135,4 @@ var tiled;
     tiled.TMXConstants = TMXConstants;
     __reflect(TMXConstants.prototype, "tiled.TMXConstants");
 })(tiled || (tiled = {}));
+//# sourceMappingURL=TMXConstants.js.map

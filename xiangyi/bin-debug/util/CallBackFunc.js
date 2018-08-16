@@ -25,3 +25,4 @@ var CallBackFunc = (function () {
     return CallBackFunc;
 }());
 __reflect(CallBackFunc.prototype, "CallBackFunc");
+//# sourceMappingURL=CallBackFunc.js.map

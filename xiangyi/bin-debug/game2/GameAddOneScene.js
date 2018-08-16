@@ -128,3 +128,4 @@ var GameAddOneScene = (function (_super) {
     return GameAddOneScene;
 }(egret.DisplayObjectContainer));
 __reflect(GameAddOneScene.prototype, "GameAddOneScene");
+//# sourceMappingURL=GameAddOneScene.js.map

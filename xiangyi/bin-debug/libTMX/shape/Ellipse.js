@@ -45,3 +45,4 @@ var tiled;
     tiled.Ellipse = Ellipse;
     __reflect(Ellipse.prototype, "tiled.Ellipse");
 })(tiled || (tiled = {}));
+//# sourceMappingURL=Ellipse.js.map

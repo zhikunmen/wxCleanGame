@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="GameVcSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<!--<e:Image source="lhj_bg_jpg"/>-->
+	<e:Group id="container" width="1280" height="720">
+		
+	</e:Group>
+	<e:Rect id="frame" width="975" height="525" x="159" y="45" anchorOffsetX="0" visible="false"/>
+</e:Skin>

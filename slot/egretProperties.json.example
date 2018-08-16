@@ -1,0 +1,58 @@
+{
+	"native": {
+		"path_ignore": []
+	},
+	"publish": {
+		"web": 0,
+		"native": 1,
+		"path": "bin-release"
+	},
+	"egret_version": "5.0.4",
+	"template": {},
+	"eui": {
+		"exmlRoot": "resource",
+		"themes": [
+			"resource/dt.thm.json"
+		],
+		"exmlPublishPolicy": "content"
+	},
+	"modules": [
+		{
+			"name": "egret"
+		},
+		{
+			"name": "game"
+		},
+		{
+			"name": "res"
+		},
+		{
+			"name": "eui"
+		},
+		{
+			"name": "tween"
+		},
+		{
+			"name": "socket"
+		},
+		{
+			"name": "dragonBones"
+		},
+		{
+			"name": "promise",
+			"path": "./promise"
+		},
+		{
+			"name": "pureMvc",
+			"path": "pureMvc"
+		},
+		{
+			"name": "uniLib",
+			"path": "../libsrc/uniLib-dev"
+		},
+		{
+			"name": "chesscommonlib",
+			"path": "../libsrc/chesscommonlib"
+		}
+	]
+}

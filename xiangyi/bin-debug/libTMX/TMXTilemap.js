@@ -374,3 +374,4 @@ var tiled;
     tiled.TMXTilemap = TMXTilemap;
     __reflect(TMXTilemap.prototype, "tiled.TMXTilemap");
 })(tiled || (tiled = {}));
+//# sourceMappingURL=TMXTilemap.js.map

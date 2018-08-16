@@ -1,0 +1,14 @@
+{"file":"superslot_up_num.png","frames":{
+".":{"x":118,"y":0,"w":7,"h":10,"offX":10,"offY":28,"sourceW":25,"sourceH":40},
+"0":{"x":91,"y":0,"w":25,"h":40,"offX":0,"offY":0,"sourceW":25,"sourceH":40},
+"1":{"x":108,"y":42,"w":9,"h":40,"offX":16,"offY":0,"sourceW":25,"sourceH":40},
+"2":{"x":0,"y":42,"w":25,"h":40,"offX":0,"offY":0,"sourceW":25,"sourceH":40},
+"3":{"x":80,"y":84,"w":24,"h":40,"offX":0,"offY":0,"sourceW":24,"sourceH":40},
+"4":{"x":54,"y":42,"w":25,"h":40,"offX":0,"offY":0,"sourceW":25,"sourceH":40},
+"5":{"x":81,"y":42,"w":25,"h":40,"offX":0,"offY":0,"sourceW":25,"sourceH":40},
+"6":{"x":27,"y":84,"w":25,"h":40,"offX":0,"offY":0,"sourceW":25,"sourceH":40},
+"7":{"x":54,"y":84,"w":24,"h":40,"offX":0,"offY":0,"sourceW":24,"sourceH":40},
+"8":{"x":27,"y":42,"w":25,"h":40,"offX":0,"offY":0,"sourceW":25,"sourceH":40},
+"9":{"x":0,"y":84,"w":25,"h":40,"offX":0,"offY":0,"sourceW":25,"sourceH":40},
+"万":{"x":46,"y":0,"w":43,"h":40,"offX":4,"offY":0,"sourceW":52,"sourceH":40},
+"亿":{"x":0,"y":0,"w":44,"h":40,"offX":5,"offY":0,"sourceW":52,"sourceH":40}}}

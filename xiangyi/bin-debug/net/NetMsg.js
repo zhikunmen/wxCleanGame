@@ -10,3 +10,4 @@ var NetMsg = (function () {
     return NetMsg;
 }());
 __reflect(NetMsg.prototype, "NetMsg");
+//# sourceMappingURL=NetMsg.js.map

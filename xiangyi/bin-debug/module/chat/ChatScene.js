@@ -29,3 +29,4 @@ var ChatScene = (function (_super) {
     return ChatScene;
 }(eui.Component));
 __reflect(ChatScene.prototype, "ChatScene");
+//# sourceMappingURL=ChatScene.js.map

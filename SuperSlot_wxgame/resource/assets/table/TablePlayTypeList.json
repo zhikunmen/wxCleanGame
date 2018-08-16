@@ -1,0 +1,12 @@
+[
+{"id":143,"desc":"超时暂停","playTypeKey":"outTimePause","playTypeValue":"True","playType":6,"playTypedesc":"时间选择","parent":0,"buttonType":2,"exclude":[],"interact":[]},
+{"id":144,"desc":"超时托管","playTypeKey":"outTimePause","playTypeValue":"False","playType":6,"playTypedesc":"时间选择","parent":0,"buttonType":2,"exclude":[],"interact":[]},
+{"id":359,"desc":"抢庄","playTypeKey":"bankerType","playTypeValue":"1","playType":1,"playTypedesc":"游戏玩法","parent":0,"buttonType":2,"exclude":[],"interact":[]},
+{"id":360,"desc":"通比牛牛","playTypeKey":"bankerType","playTypeValue":"2","playType":1,"playTypedesc":"游戏玩法","parent":0,"buttonType":2,"exclude":[],"interact":[]},
+{"id":361,"desc":"牛牛上庄","playTypeKey":"bankerType","playTypeValue":"3","playType":1,"playTypedesc":"游戏玩法","parent":0,"buttonType":2,"exclude":[],"interact":[]},
+{"id":362,"desc":"最高10分","playTypeKey":"betPoint","playTypeValue":"5,10","playType":1,"playTypedesc":"底注","parent":0,"buttonType":2,"exclude":[],"interact":[]},
+{"id":363,"desc":"最高20分","playTypeKey":"betPoint","playTypeValue":"5,10,20","playType":1,"playTypedesc":"底注","parent":0,"buttonType":2,"exclude":[],"interact":[]},
+{"id":364,"desc":"最高50分","playTypeKey":"betPoint","playTypeValue":"10,20,30,50","playType":1,"playTypedesc":"底注","parent":0,"buttonType":2,"exclude":[],"interact":[]},
+{"id":365,"desc":"牛牛×3牛九×2牛八×2","playTypeKey":"tiemsType","playTypeValue":"1","playType":1,"playTypedesc":"特殊","parent":0,"buttonType":2,"exclude":[],"interact":[]},
+{"id":366,"desc":"牛牛×4牛九×3牛八×2牛七×2","playTypeKey":"tiemsType","playTypeValue":"2","playType":1,"playTypedesc":"特殊","parent":0,"buttonType":2,"exclude":[],"interact":[]}
+]

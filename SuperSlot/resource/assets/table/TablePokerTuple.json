@@ -1,0 +1,16 @@
+[
+{"tupleType":1,"tupleDec":"五小牛","tupleName":"WXN","bSpecial":true,"bNiu":false,"tupleAnima":"niu13","tupleSound":"niu_13","tupleArg":10},
+{"tupleType":2,"tupleDec":"炸弹","tupleName":"Bomb","bSpecial":true,"bNiu":false,"tupleAnima":"niu12","tupleSound":"niu_12","tupleArg":4},
+{"tupleType":3,"tupleDec":"五花牛","tupleName":"WHN","bSpecial":true,"bNiu":false,"tupleAnima":"niu11","tupleSound":"niu_11","tupleArg":10},
+{"tupleType":4,"tupleDec":"没牛","tupleName":"","bSpecial":false,"bNiu":false,"tupleAnima":"meiniu","tupleSound":"niu_0","tupleArg":0},
+{"tupleType":5,"tupleDec":"牛一","tupleName":"","bSpecial":false,"bNiu":true,"tupleAnima":"niu1","tupleSound":"niu_1","tupleArg":1},
+{"tupleType":6,"tupleDec":"牛二","tupleName":"","bSpecial":false,"bNiu":true,"tupleAnima":"niu2","tupleSound":"niu_2","tupleArg":2},
+{"tupleType":7,"tupleDec":"牛三","tupleName":"","bSpecial":false,"bNiu":true,"tupleAnima":"niu3","tupleSound":"niu_3","tupleArg":3},
+{"tupleType":8,"tupleDec":"牛四","tupleName":"","bSpecial":false,"bNiu":true,"tupleAnima":"niu4","tupleSound":"niu_4","tupleArg":4},
+{"tupleType":9,"tupleDec":"牛五","tupleName":"","bSpecial":false,"bNiu":true,"tupleAnima":"niu5","tupleSound":"niu_5","tupleArg":5},
+{"tupleType":10,"tupleDec":"牛六","tupleName":"","bSpecial":false,"bNiu":true,"tupleAnima":"niu6","tupleSound":"niu_6","tupleArg":6},
+{"tupleType":11,"tupleDec":"牛七","tupleName":"","bSpecial":false,"bNiu":true,"tupleAnima":"niu7","tupleSound":"niu_7","tupleArg":7},
+{"tupleType":12,"tupleDec":"牛八","tupleName":"","bSpecial":false,"bNiu":true,"tupleAnima":"niu8","tupleSound":"niu_8","tupleArg":8},
+{"tupleType":13,"tupleDec":"牛九","tupleName":"","bSpecial":false,"bNiu":true,"tupleAnima":"niu9","tupleSound":"niu_9","tupleArg":9},
+{"tupleType":14,"tupleDec":"牛牛","tupleName":"","bSpecial":false,"bNiu":true,"tupleAnima":"niu10","tupleSound":"niu_10","tupleArg":0}
+]

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SuperSlot_LotteryHistoryItem" width="47" height="41" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+    <e:Image id="bg" width="47" height="41" source=""/>
+	<e:Image id="_newImage" width="33" height="12" x="7" y="0" source="ss_new" visible="false"/>
+
+</e:Skin>

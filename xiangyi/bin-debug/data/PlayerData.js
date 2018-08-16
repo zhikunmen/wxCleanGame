@@ -24,3 +24,4 @@ var PlayerData = (function () {
     return PlayerData;
 }());
 __reflect(PlayerData.prototype, "PlayerData");
+//# sourceMappingURL=PlayerData.js.map

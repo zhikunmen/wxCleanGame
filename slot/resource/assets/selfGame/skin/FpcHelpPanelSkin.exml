@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="fpc_HelpPanelSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" >
+	<e:Image source="da_frame_4" x="151" y="65.5" width="978" height="589" scale9Grid="20,31,34,15"/>
+	<e:Image source="da_frame_3" x="177" y="135" width="926" height="495" scale9Grid="12,14,11,7"/>
+	<e:Image id="introduce_btn" source="dt_intro_btn_2" x="284" y="40"/>
+	<e:Image id="rule_btn" source="dt_rule_btn_2" x="523" y="40"/>
+	<e:Image id="instr_btn" source="dt_instr_btn_2" x="746" y="40"/>
+	<e:Button id="closeBtn"  name="close" x="1084" y="49" >
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="dt_close_btn_1" source.down="dt_close_btn_2" />
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image id="introduce_bg" source="dt_intro_btn_1"  x="298" y="52"/>
+	<e:Label id="introduce_txt" text="1.五星宏辉是种百人联网扑克类游戏。\n2.系统每回合开一张扑克牌，玩家在下注阶段可以选择红桃，黑桃，方块，梅花王冠五种花色进行押注：每局可以押注多种花色。\n3.系统开出的扑克牌的花色为当局胜利的花色。" size="24" x="219" y="170" width="842" lineSpacing="8"/>
+
+	<e:Image id="rule_bg" source="dt_rule_btn_1" x="522" y="52" visible="false"/>
+	<e:Label id="rule_txt" text="游戏规则：\n1.一共有5个投注区域，游戏中可选筹码进行下注，压中获得对应倍数返奖\n2.每轮游戏分成下注时间和开奖时间，开奖时无法下注，请耐心等待下局开始\n3.游戏中玩家可以申请上庄，成功申请后可连续10局坐庄
+" size="24" x="219" y="170" width="842" visible="false" lineSpacing="8"/>
+
+<e:Image id="instr_bg" source="dt_instr_btn_1" x="744" y="52" visible="false"/>
+<e:Image id="instr_txt" source="dt_help_bg_jpg" x="177" y="135" visible="false"/>
+</e:Skin>

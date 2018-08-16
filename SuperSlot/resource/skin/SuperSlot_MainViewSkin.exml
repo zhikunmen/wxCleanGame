@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="SuperSlot_MainViewSkin" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" xmlns:SZLobby="SZLobby.*" >
+	<w:Config id="1646344383a"/>
+	<e:Image id="background" x="0" y="0" source="ss_main_bg" visible="false"/>
+	<e:Image id="_peripheral" width="630" height="676" x="52" y="26" source="ss_lighting0"/>
+	<e:Scroller id="sizeScroller" width="397" x="170" anchorOffsetX="0" anchorOffsetY="0" bounces="false" scrollPolicyH="off" height="49" y="488">
+		<e:List id="sizeList" anchorOffsetX="0" anchorOffsetY="0" y="-41" x="90.58" itemRendererSkinName="SuperSlot_SizeHistoryItem" height="49">
+		<e:ArrayCollection/>
+			<e:layout>
+				<e:HorizontalLayout gap="2"/>
+			</e:layout>
+
+		</e:List>
+	</e:Scroller>
+	<e:Scroller id="lotteryScroller" width="570" x="83" anchorOffsetX="0" anchorOffsetY="0" bounces="false" scrollPolicyH="off" height="42" y="630">
+		<e:List id="lotteryList" anchorOffsetX="0" anchorOffsetY="0" y="-41" x="90.58" itemRendererSkinName="SuperSlot_LotteryHistoryItem">
+		<e:ArrayCollection/>
+			<e:layout>
+				<e:HorizontalLayout gap="0.5"/>
+			</e:layout>
+
+		</e:List>
+	</e:Scroller>
+	<e:Image id="logo_1" x="82" y="55" source="ss_logo_1"/>
+	<e:Image id="logo_2" x="164" y="55" source="ss_logo_2"/>
+	<e:Image id="logo_3" x="246" y="55" source="ss_logo_3"/>
+	<e:Image id="logo_4" x="328" y="55" source="ss_logo_4"/>
+	<e:Image id="logo_5" x="410" y="55" source="ss_logo_5"/>
+	<e:Image id="logo_6" x="491" y="55" source="ss_logo_6"/>
+	<e:Image id="logo_7" x="573" y="55" source="ss_logo_7"/>
+    <e:Image id="logo_8" x="573" y="137" source="ss_logo_8"/>
+    <e:Image id="logo_9" x="573" y="219" source="ss_logo_9"/>
+    <e:Image id="logo_10" x="573" y="301" source="ss_logo_10"/>
+    <e:Image id="logo_11" x="573" y="383" source="ss_logo_11"/>
+    <e:Image id="logo_12" x="573" y="465" source="ss_logo_12"/>
+    <e:Image id="logo_13" x="573" y="547" source="ss_logo_13"/>
+    <e:Image id="logo_14" x="491" y="547" source="ss_logo_14"/>
+    <e:Image id="logo_15" x="410" y="547" source="ss_logo_15"/>
+    <e:Image id="logo_16" x="328" y="547" source="ss_logo_16"/>
+    <e:Image id="logo_17" x="246" y="547" source="ss_logo_17"/>
+    <e:Image id="logo_18" x="164" y="547" source="ss_logo_18"/>
+    <e:Image id="logo_19" x="82" y="547" source="ss_logo_19"/>
+    <e:Image id="logo_20" x="82" y="465" source="ss_logo_20"/>
+    <e:Image id="logo_21" x="82" y="383" source="ss_logo_21"/>
+    <e:Image id="logo_22" x="82" y="301" source="ss_logo_22"/>
+    <e:Image id="logo_23" x="82" y="219" source="ss_logo_23"/>
+    <e:Image id="logo_24" x="82" y="137" source="ss_logo_24"/>
+	<e:BitmapLabel id="reward_down" width="208" height="36" x="738" y="131" text="00000000" font="superslot_dikuang_num_fnt" letterSpacing="5"/>
+	<e:BitmapLabel id="reward_up" width="211" height="38" x="737" y="129" text="0" font="superslot_up_num_fnt" letterSpacing="1.5" verticalAlign="top" textAlign="right"/>
+	<e:BitmapLabel id="reward_up_other" width="211" height="38" x="737" y="129" text="" letterSpacing="1.5" verticalAlign="top" textAlign="right" font="superslot_up_other_num_fnt"/>
+    <e:BitmapLabel id="balance_down" width="208" height="36" x="1002" y="131" text="00000000" font="superslot_dikuang_num_fnt" letterSpacing="5"/>
+	<e:BitmapLabel id="balance_up" width="211" height="38" x="1001" y="129" text="0" letterSpacing="1.5" verticalAlign="top" textAlign="right" font="superslot_up_num_fnt"/>
+	<e:BitmapLabel id="bar_down" width="122" height="29" x="730" y="218" font="superslot_down_num_fnt" text="000000" letterSpacing="4"/>
+	<e:BitmapLabel id="bar_up" width="128" height="31" x="730" y="216" text="0" letterSpacing="0" font="superslot_up_small_num_fnt" verticalAlign="top" textAlign="right"/>
+    <e:BitmapLabel id="star_down" width="122" height="29" x="730" y="297" font="superslot_down_num_fnt" text="000000" letterSpacing="4"/>
+	<e:BitmapLabel id="star_up" width="128" height="31" x="730" y="295" text="0" letterSpacing="0" font="superslot_up_small_num_fnt" verticalAlign="top" textAlign="right"/>
+    <e:BitmapLabel id="bell_down" width="122" height="29" x="730" y="373" font="superslot_down_num_fnt" text="000000" letterSpacing="4"/>
+	<e:BitmapLabel id="bell_up" width="128" height="31" x="730" y="371" text="0" letterSpacing="0" font="superslot_up_small_num_fnt" verticalAlign="top" textAlign="right"/>
+    <e:BitmapLabel id="orange_down" width="122" height="29" x="730" y="455" font="superslot_down_num_fnt" text="000000" letterSpacing="4"/>
+	<e:BitmapLabel id="orange_up" width="128" height="31" x="730" y="453" text="0" letterSpacing="0" font="superslot_up_small_num_fnt" verticalAlign="top" textAlign="right"/>
+    <e:BitmapLabel id="seven_down" width="122" height="29" x="997" y="218" font="superslot_down_num_fnt" text="000000" letterSpacing="4"/>
+	<e:BitmapLabel id="seven_up" width="128" height="31" x="997" y="216" text="0" letterSpacing="0" font="superslot_up_small_num_fnt" verticalAlign="top" textAlign="right"/>
+    <e:BitmapLabel id="watermelon_down" width="122" height="29" x="997" y="297" font="superslot_down_num_fnt" text="000000" letterSpacing="4"/>
+	<e:BitmapLabel id="watermelon_up" width="128" height="31" x="997" y="295" text="0" letterSpacing="0" font="superslot_up_small_num_fnt" verticalAlign="top" textAlign="right"/>
+    <e:BitmapLabel id="papaya_down" width="122" height="29" x="997" y="373" font="superslot_down_num_fnt" text="000000" letterSpacing="4"/>
+	<e:BitmapLabel id="papaya_up" width="128" height="31" x="997" y="371" text="0" letterSpacing="0" font="superslot_up_small_num_fnt" verticalAlign="top" textAlign="right"/>
+    <e:BitmapLabel id="apple_down" width="122" height="29" x="997" y="455" font="superslot_down_num_fnt" text="000000" letterSpacing="4"/>
+	<e:BitmapLabel id="apple_up" width="128" height="31" x="997" y="453" text="0" letterSpacing="0" font="superslot_up_small_num_fnt" verticalAlign="top" textAlign="right"/>
+    <e:BitmapLabel id="bet_down" width="122" height="29" x="787" y="552" font="superslot_down_num_fnt" text="000000" letterSpacing="4"/>
+	<e:BitmapLabel id="bet_up" width="126" height="31" x="787" y="550" text="10000" letterSpacing="0" font="superslot_up_small_num_fnt" verticalAlign="top" textAlign="right"/>
+	<e:Button id="_bar" label="" x="881" y="196">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_bar0" source.down="ss_bar1" source.disabled="ss_bar3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_seven" label="" x="1149" y="196">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_seven0" source.down="ss_seven1" source.disabled="ss_seven3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_star" label="" x="881" y="276">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_star0" source.down="ss_star1" source.disabled="ss_star3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_watermelon" label="" x="1149" y="276">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_watermelon0" source.down="ss_watermelon1" source.disabled="ss_watermelon3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_bell" label="" x="881" y="356">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_bell0" source.down="ss_bell1" source.disabled="ss_bell3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_papaya" label="" x="1149" y="356">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_papaya0" source.down="ss_papaya1" source.disabled="ss_papaya3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_orange" label="" x="881" y="436">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_orange0" source.down="ss_orange1" source.disabled="ss_orange3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_apple" label="" x="1149" y="436">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_apple0" source.down="ss_apple1" source.disabled="ss_apple3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_reduce" label="" x="711" y="534" enabled="true">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_reduce0" source.down="ss_reduce1" source.disabled="ss_reduce3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+	<e:Button id="_plus" label="" x="927" y="534" enabled="true">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_plus0" source.down="ss_plus1" source.disabled="ss_plus4"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+	<e:Button id="_full" label="" x="1017" y="531">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_full0" source.down="ss_full1" source.disabled="ss_full3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_revoke" label="" x="1127" y="531">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_revoke0" source.down="ss_revoke1" source.disabled="ss_revoke3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_left" label="" x="711" y="621" enabled="true">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_left0" source.down="ss_left1" source.disabled="ss_left3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+	<e:Button id="_right" label="" x="793" y="621" enabled="true">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_right0" source.down="ss_right1" source.disabled="ss_right3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+	<e:Button id="_small" label="" x="876" y="621" visible="false">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_small0" source.down="ss_small1" source.disabled="ss_small3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_big" label="" x="981" y="621" visible="false">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_big0" source.down="ss_big1" source.disabled="ss_big3"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image id="_startCircle" x="1073" y="603" source="ss_start_circle_1_png" visible="false"/>
+	<e:Button id="_start" label="" x="1087" y="617">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_start_press0_png" source.down="ss_start_press1_png" source.disabled="ss_start_press2_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+
+	</e:Button>
+	<e:Button id="auto_start" label="" x="1087" y="617" visible="false">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_cancel_auto_0_png" source.down="ss_cancel_auto_1_png" source.disabled="ss_cancel_auto_2_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:BitmapLabel id="size_down" width="56" height="36" x="350.56" y="422" text="00" font="superslot_dikuang_num_fnt" letterSpacing="10"/>
+	<e:BitmapLabel id="size_up" width="60" height="36" x="343" y="420" text="" font="superslot_up_num_fnt" letterSpacing="1.5" verticalAlign="top" textAlign="right"/>
+	<e:Image id="_displayImage" width="572" height="572" x="82" y="56" source="ss_fruit_0" visible="false"/>
+	<e:Image id="_jpImage" width="67" height="67" x="342" y="330" source="ss_JP0"/>
+	<e:Button id="_compare" label="" x="878" y="620">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_compare_0_png" source.down="ss_compare_2_png" source.disabled="ss_compare_1_png"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_helpBtn" label="" x="1000" y="10">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_help0" source.down="ss_help1"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_settingBtn" label="" x="1078" y="10">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_setting0" source.down="ss_setting1"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Button id="_backBtn" label="" x="1160" y="10">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="ss_exit0" source.down="ss_exit1"/>
+			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:BitmapLabel id="changeOfGold" width="1080" height="109" x="640" y="460" text="" letterSpacing="1.5" verticalAlign="top" textAlign="center" font="superslot_change_gold_num_fnt" anchorOffsetX="540"/>
+
+    <!--<e:Image id="selected_1" source="slwh_selected_1" x="214" y="120" visible="false"/>
+    <e:Image id="selected_2" source="slwh_selected_5" x="316" y="103" visible="false"/>
+    <e:Image id="selected_3" source="slwh_selected_1" x="463" y="120" visible="false"/>
+    <e:Image id="selected_4" source="slwh_selected_2" x="565" y="120" visible="false"/>
+    <e:Image id="selected_5" source="slwh_selected_2" x="668" y="120" visible="false"/>
+    <e:Image id="selected_6" source="slwh_selected_2" x="668" y="203" visible="false"/>
+    <e:Image id="selected_7" source="slwh_selected_3" x="668" y="286" visible="false"/>
+    <e:Image id="selected_8" source="slwh_selected_3" x="668" y="369" visible="false"/>
+    <e:Image id="selected_9" source="slwh_selected_3" x="668" y="452" visible="false"/>
+    <e:Image id="selected_10" source="slwh_selected_4" x="668" y="535" visible="false"/>
+    <e:Image id="selected_11" source="slwh_selected_4" x="668" y="620" visible="false"/>
+    <e:Image id="selected_12" source="slwh_selected_4" x="565" y="620" visible="false"/>
+    <e:Image id="selected_13" source="slwh_selected_1" x="463" y="620" visible="false"/>
+    <e:Image id="selected_14" source="slwh_selected_5" x="316" y="600" visible="false"/>
+    <e:Image id="selected_15" source="slwh_selected_1" x="214" y="620" visible="false"/>
+    <e:Image id="selected_16" source="slwh_selected_2" x="112" y="620" visible="false"/>
+    <e:Image id="selected_17" source="slwh_selected_2" x="10" y="618" visible="false"/>
+    <e:Image id="selected_18" source="slwh_selected_2" x="10" y="535" visible="false"/>
+    <e:Image id="selected_19" source="slwh_selected_3" x="10" y="452" visible="false"/>
+    <e:Image id="selected_20" source="slwh_selected_3" x="10" y="369" visible="false"/>
+    <e:Image id="selected_21" source="slwh_selected_3" x="10" y="286" visible="false"/>
+    <e:Image id="selected_22" source="slwh_selected_4" x="10" y="203" visible="false"/>
+    <e:Image id="selected_23" source="slwh_selected_4" x="10" y="120" visible="false"/>
+    <e:Image id="selected_24" source="slwh_selected_4" x="112" y="120" visible="false"/>-->
+</e:Skin>
