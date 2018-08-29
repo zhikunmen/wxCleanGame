@@ -57,4 +57,3 @@ var tiled;
     tiled.TMXAnimationFrame = TMXAnimationFrame;
     __reflect(TMXAnimationFrame.prototype, "tiled.TMXAnimationFrame");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXAnimationFrame.js.map

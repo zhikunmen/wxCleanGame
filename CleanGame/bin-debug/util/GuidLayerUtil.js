@@ -21,4 +21,3 @@ var GuidLayerUtil = (function (_super) {
     return GuidLayerUtil;
 }(egret.DisplayObjectContainer));
 __reflect(GuidLayerUtil.prototype, "GuidLayerUtil");
-//# sourceMappingURL=GuidLayerUtil.js.map

@@ -35,4 +35,3 @@ var FishScene = (function (_super) {
     return FishScene;
 }(eui.Component));
 __reflect(FishScene.prototype, "FishScene");
-//# sourceMappingURL=FishScene.js.map

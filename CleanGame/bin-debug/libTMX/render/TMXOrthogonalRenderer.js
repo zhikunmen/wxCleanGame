@@ -106,4 +106,3 @@ var tiled;
     tiled.TMXOrthogonalRenderer = TMXOrthogonalRenderer;
     __reflect(TMXOrthogonalRenderer.prototype, "tiled.TMXOrthogonalRenderer");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXOrthogonalRenderer.js.map

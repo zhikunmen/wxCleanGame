@@ -38,4 +38,3 @@ var PauseLayer = (function (_super) {
     return PauseLayer;
 }(eui.Component));
 __reflect(PauseLayer.prototype, "PauseLayer");
-//# sourceMappingURL=PauseLayer.js.map

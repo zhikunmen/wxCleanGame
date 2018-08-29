@@ -51,4 +51,3 @@ var tiled;
     tiled.Polygon = Polygon;
     __reflect(Polygon.prototype, "tiled.Polygon");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=Polygon.js.map

@@ -60,4 +60,3 @@ var tiled;
     tiled.TMXLayerBase = TMXLayerBase;
     __reflect(TMXLayerBase.prototype, "tiled.TMXLayerBase", ["tiled.ILayer"]);
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXLayerBase.js.map

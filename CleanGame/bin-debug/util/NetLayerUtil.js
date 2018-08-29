@@ -43,4 +43,3 @@ var NetLayerUtil = (function (_super) {
     return NetLayerUtil;
 }(egret.DisplayObjectContainer));
 __reflect(NetLayerUtil.prototype, "NetLayerUtil");
-//# sourceMappingURL=NetLayerUtil.js.map

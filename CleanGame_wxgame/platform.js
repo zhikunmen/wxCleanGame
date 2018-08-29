@@ -34,6 +34,14 @@ class WxgamePlatform {
         })
     }
 
+    shareAppMessage(){
+      return new Promise((resolve,reject)=>{
+        wx.shareAppMessage({
+          title
+        })
+      })
+    }
+
     openDataContext = new WxgameOpenDataContext();
 }
 

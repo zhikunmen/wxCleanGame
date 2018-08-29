@@ -16,4 +16,3 @@ var NetError = (function (_super) {
     return NetError;
 }(eui.Component));
 __reflect(NetError.prototype, "NetError");
-//# sourceMappingURL=NetError.js.map

@@ -21,4 +21,3 @@ var GameMissionProgress = (function (_super) {
     return GameMissionProgress;
 }(eui.Component));
 __reflect(GameMissionProgress.prototype, "GameMissionProgress");
-//# sourceMappingURL=GameMissionProgress.js.map

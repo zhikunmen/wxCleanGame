@@ -19,4 +19,3 @@ var tiled;
     tiled.TMXProperty = TMXProperty;
     __reflect(TMXProperty.prototype, "tiled.TMXProperty");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXProperty.js.map

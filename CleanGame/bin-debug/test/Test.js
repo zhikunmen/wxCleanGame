@@ -37,4 +37,3 @@ var Test = (function (_super) {
     return Test;
 }(eui.Component));
 __reflect(Test.prototype, "Test");
-//# sourceMappingURL=Test.js.map

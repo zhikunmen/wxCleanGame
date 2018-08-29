@@ -45,4 +45,3 @@ var LeanCloudTest = (function (_super) {
     return LeanCloudTest;
 }(eui.Component));
 __reflect(LeanCloudTest.prototype, "LeanCloudTest");
-//# sourceMappingURL=LeanCloudTest.js.map

@@ -226,4 +226,3 @@ var GridMgr = (function () {
     return GridMgr;
 }());
 __reflect(GridMgr.prototype, "GridMgr");
-//# sourceMappingURL=GridMgr.js.map

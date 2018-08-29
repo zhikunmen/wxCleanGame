@@ -159,4 +159,3 @@ var tiled;
     tiled.TMXIsometricRenderer = TMXIsometricRenderer;
     __reflect(TMXIsometricRenderer.prototype, "tiled.TMXIsometricRenderer");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXIsometricRenderer.js.map

@@ -77,4 +77,3 @@ var ResLoading = (function (_super) {
     return ResLoading;
 }(eui.Component));
 __reflect(ResLoading.prototype, "ResLoading");
-//# sourceMappingURL=ResLoading.js.map

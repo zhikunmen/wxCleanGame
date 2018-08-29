@@ -498,4 +498,3 @@ var GameScene = (function (_super) {
     return GameScene;
 }(egret.DisplayObjectContainer));
 __reflect(GameScene.prototype, "GameScene");
-//# sourceMappingURL=GameScene.js.map

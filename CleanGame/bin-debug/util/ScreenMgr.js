@@ -51,4 +51,3 @@ var ScreenMgr = (function () {
     return ScreenMgr;
 }());
 __reflect(ScreenMgr.prototype, "ScreenMgr");
-//# sourceMappingURL=ScreenMgr.js.map

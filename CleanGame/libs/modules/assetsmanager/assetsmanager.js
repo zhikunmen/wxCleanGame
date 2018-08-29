@@ -8,47 +8,321 @@ var __extends = this && this.__extends || function __extends(t, e) {
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 r.prototype = e.prototype, t.prototype = new r();
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [0, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2014-present, Egret Technology.
+//  All rights reserved.
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
+//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//////////////////////////////////////////////////////////////////////////////////////
+var RES;
+(function (RES) {
+    /**
+     * @class RES.ResourceLoader
+     * @classdesc
+     * @private
+     */
+    var ResourceLoader = (function () {
+        function ResourceLoader() {
+            /**
+             * 当前组加载的项总个数,key为groupName
+             */
+            this.groupTotalDic = {};
+            /**
+             * 已经加载的项个数,key为groupName
+             */
+            this.numLoadedDic = {};
+            /**
+             * 加载失败的组,key为groupName
+             */
+            this.groupErrorDic = {};
+            this.retryTimesDic = {};
+            this.maxRetryTimes = 3;
+            this.reporterDic = {};
+            this.dispatcherDic = {};
+            this.failedList = new Array();
+            this.loadItemErrorDic = {};
+            this.errorDic = {};
+            /**
+             * 资源优先级队列，key为资源，value为优先级
+             */
+            this.itemListPriorityDic = {};
+            /**
+             * 资源是否在加载
+             */
+            this.itemLoadDic = {};
+            this.promiseHash = {};
+            this.loadingCount = 0;
+            this.thread = 4;
+        }
+        ResourceLoader.prototype.findPriorityInDic = function (item) {
+            for (var priority in this.itemListPriorityDic) {
+                if (this.itemListPriorityDic[priority].indexOf(item) > -1)
+                    return parseInt(priority);
+            }
+            return undefined;
+        };
+        ResourceLoader.prototype.updatelistPriority = function (list, priority) {
+            if (this.itemListPriorityDic[priority] == undefined) {
+                this.itemListPriorityDic[priority] = [];
+            }
+            for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
+                var item = list_1[_i];
+                if (this.itemLoadDic[item.name] == 1) {
+                    continue;
+                }
+                var oldPriority = this.findPriorityInDic(item);
+                if (oldPriority == undefined) {
+                    this.itemListPriorityDic[priority].push(item);
+                }
+                else {
+                    if (oldPriority < priority) {
+                        this.itemListPriorityDic[priority].push(item);
+                        var index = this.itemListPriorityDic[oldPriority].indexOf(item);
+                        this.itemListPriorityDic[oldPriority].splice(index, 1);
+                    }
+                }
+            }
+        };
+        ResourceLoader.prototype.load = function (list, groupName, priority, reporter) {
+            if (this.promiseHash[groupName]) {
+                return this.promiseHash[groupName];
+            }
+            var total = list.length;
+            for (var i = 0; i < total; i++) {
+                var resInfo = list[i];
+                if (!resInfo.groupNames) {
+                    resInfo.groupNames = [];
+                }
+                resInfo.groupNames.push(groupName);
+            }
+            this.groupTotalDic[groupName] = list.length;
+            this.numLoadedDic[groupName] = 0;
+            this.updatelistPriority(list, priority);
+            this.reporterDic[groupName] = reporter;
+            var dispatcher = new egret.EventDispatcher();
+            this.dispatcherDic[groupName] = dispatcher;
+            var promise = new Promise(function (reslove, reject) {
+                dispatcher.addEventListener("complete", reslove, null);
+                dispatcher.addEventListener("error", function (e) {
+                    reject(e.data);
+                }, null);
+            });
+            this.promiseHash[groupName] = promise;
+            this.next();
+            return promise;
+        };
+        ResourceLoader.prototype.next = function () {
+            var _this = this;
+            var _loop_1 = function () {
+                var r = this_1.getOneResourceInfo();
+                if (!r)
+                    return "break";
+                this_1.itemLoadDic[r.name] = 1;
+                this_1.loadingCount++;
+                this_1.loadResource(r)
+                    .then(function (response) {
+                    _this.loadingCount--;
+                    delete _this.itemLoadDic[r.name];
+                    RES.host.save(r, response);
+                    var groupNames = [];
+                    for (var _i = 0, _a = r.groupNames; _i < _a.length; _i++) {
+                        var groupName = _a[_i];
+                        groupNames.push(groupName);
+                    }
+                    delete r.groupNames;
+                    for (var _b = 0, groupNames_1 = groupNames; _b < groupNames_1.length; _b++) {
+                        var groupName = groupNames_1[_b];
+                        var reporter = _this.reporterDic[groupName];
+                        _this.numLoadedDic[groupName]++;
+                        var current = _this.numLoadedDic[groupName];
+                        var total = _this.groupTotalDic[groupName];
+                        if (reporter && reporter.onProgress) {
+                            reporter.onProgress(current, total, r);
+                        }
+                        if (current == total) {
+                            var groupError = _this.groupErrorDic[groupName];
+                            delete _this.groupTotalDic[groupName];
+                            delete _this.numLoadedDic[groupName];
+                            delete _this.reporterDic[groupName];
+                            delete _this.groupErrorDic[groupName];
+                            delete _this.promiseHash[groupName];
+                            var dispatcher = _this.dispatcherDic[groupName];
+                            delete _this.dispatcherDic[groupName];
+                            if (groupError) {
+                                var itemList = _this.loadItemErrorDic[groupName];
+                                delete _this.loadItemErrorDic[groupName];
+                                var error = _this.errorDic[groupName];
+                                delete _this.errorDic[groupName];
+                                dispatcher.dispatchEventWith("error", false, { itemList: itemList, error: error });
+                            }
+                            else {
+                                dispatcher.dispatchEventWith("complete");
+                            }
+                        }
+                    }
+                    _this.next();
+                }).catch(function (error) {
+                    if (!error) {
+                        throw r.name + " load fail";
+                    }
+                    if (!error.__resource_manager_error__) {
+                        throw error;
+                    }
+                    delete _this.itemLoadDic[r.name];
+                    _this.loadingCount--;
+                    delete RES.host.state[r.root + r.name];
+                    var times = _this.retryTimesDic[r.name] || 1;
+                    if (times > _this.maxRetryTimes) {
+                        delete _this.retryTimesDic[r.name];
+                        var groupNames = [];
+                        for (var _i = 0, _a = r.groupNames; _i < _a.length; _i++) {
+                            var groupName = _a[_i];
+                            groupNames.push(groupName);
+                        }
+                        delete r.groupNames;
+                        for (var _b = 0, groupNames_2 = groupNames; _b < groupNames_2.length; _b++) {
+                            var groupName = groupNames_2[_b];
+                            if (!_this.loadItemErrorDic[groupName]) {
+                                _this.loadItemErrorDic[groupName] = [];
+                            }
+                            if (_this.loadItemErrorDic[groupName].indexOf(r) == -1) {
+                                _this.loadItemErrorDic[groupName].push(r);
+                            }
+                            _this.groupErrorDic[groupName] = true;
+                            var reporter = _this.reporterDic[groupName];
+                            _this.numLoadedDic[groupName]++;
+                            var current = _this.numLoadedDic[groupName];
+                            var total = _this.groupTotalDic[groupName];
+                            if (reporter && reporter.onProgress) {
+                                reporter.onProgress(current, total, r);
+                            }
+                            if (current == total) {
+                                delete _this.groupTotalDic[groupName];
+                                delete _this.numLoadedDic[groupName];
+                                delete _this.groupErrorDic[groupName];
+                                delete _this.reporterDic[groupName];
+                                delete _this.promiseHash[groupName];
+                                var itemList = _this.loadItemErrorDic[groupName];
+                                delete _this.loadItemErrorDic[groupName];
+                                var dispatcher = _this.dispatcherDic[groupName];
+                                delete _this.dispatcherDic[groupName];
+                                dispatcher.dispatchEventWith("error", false, { itemList: itemList, error: error });
+                            }
+                            else {
+                                _this.errorDic[groupName] = error;
+                            }
+                        }
+                        _this.next();
+                    }
+                    else {
+                        _this.retryTimesDic[r.name] = times + 1;
+                        _this.failedList.push(r);
+                        _this.next();
+                        return;
+                    }
+                });
+            };
+            var this_1 = this;
+            while (this.loadingCount < this.thread) {
+                var state_1 = _loop_1();
+                if (state_1 === "break")
+                    break;
+            }
+        };
+        /**
+         * 获取下一个待加载项
+         */
+        ResourceLoader.prototype.getOneResourceInfo = function () {
+            if (this.failedList.length > 0)
+                return this.failedList.shift();
+            var maxPriority = Number.NEGATIVE_INFINITY;
+            for (var p in this.itemListPriorityDic) {
+                maxPriority = Math.max(maxPriority, p);
+            }
+            var list = this.itemListPriorityDic[maxPriority];
+            if (!list) {
+                return undefined;
+            }
+            if (list.length == 0) {
+                delete this.itemListPriorityDic[maxPriority];
+                return this.getOneResourceInfo();
+            }
+            return list.shift();
+        };
+        ResourceLoader.prototype.loadResource = function (r, p) {
+            if (!p) {
+                if (RES.FEATURE_FLAG.FIX_DUPLICATE_LOAD == 1) {
+                    var s = RES.host.state[r.root + r.name];
+                    if (s == 2) {
+                        return Promise.resolve(RES.host.get(r));
+                    }
+                    if (s == 1) {
+                        return r.promise;
+                    }
+                }
+                p = RES.processor.isSupport(r);
+            }
+            if (!p) {
+                throw new RES.ResourceManagerError(2001, r.name, r.type);
+            }
+            RES.host.state[r.root + r.name] = 1;
+            var promise = p.onLoadStart(RES.host, r);
+            r.promise = promise;
+            return promise;
+        };
+        ResourceLoader.prototype.unloadResource = function (r) {
+            var data = RES.host.get(r);
+            if (!data) {
+                console.warn("尝试释放不存在的资源:", r.name);
+                return false;
+            }
+            var p = RES.processor.isSupport(r);
+            if (p) {
+                // host.state[r.root + r.name] = 3;
+                p.onRemoveStart(RES.host, r);
+                RES.host.remove(r);
+                if (r.extra == 1) {
+                    RES.config.removeResourceData(r);
+                }
+                return true;
+            }
+            else {
+                return true;
+            }
+        };
+        return ResourceLoader;
+    }());
+    RES.ResourceLoader = ResourceLoader;
+    __reflect(ResourceLoader.prototype, "RES.ResourceLoader");
+})(RES || (RES = {}));
 var RES;
 (function (RES) {
     RES.resourceNameSelector = function (p) { return p; };
@@ -87,7 +361,8 @@ var RES;
                 this.config = {
                     alias: {}, groups: {}, resourceRoot: configItem.root,
                     typeSelector: function () { return 'unknown'; }, mergeSelector: null,
-                    fileSystem: null
+                    fileSystem: null,
+                    loadGroup: []
                 };
             }
             return RES.queue.loadResource(configItem).catch(function (e) {
@@ -356,328 +631,12 @@ var RES;
                 removeFile: function () {
                 }
             };
-            this.config = { groups: {}, alias: {}, fileSystem: emptyFileSystem, typeSelector: function (p) { return p; }, resourceRoot: "resources", mergeSelector: null };
+            this.config = { groups: {}, alias: {}, loadGroup: [], fileSystem: emptyFileSystem, typeSelector: function (p) { return p; }, resourceRoot: "resources", mergeSelector: null };
         };
         return ResourceConfig;
     }());
     RES.ResourceConfig = ResourceConfig;
     __reflect(ResourceConfig.prototype, "RES.ResourceConfig");
-})(RES || (RES = {}));
-//////////////////////////////////////////////////////////////////////////////////////
-//
-//  Copyright (c) 2014-present, Egret Technology.
-//  All rights reserved.
-//  Redistribution and use in source and binary forms, with or without
-//  modification, are permitted provided that the following conditions are met:
-//
-//     * Redistributions of source code must retain the above copyright
-//       notice, this list of conditions and the following disclaimer.
-//     * Redistributions in binary form must reproduce the above copyright
-//       notice, this list of conditions and the following disclaimer in the
-//       documentation and/or other materials provided with the distribution.
-//     * Neither the name of the Egret nor the
-//       names of its contributors may be used to endorse or promote products
-//       derived from this software without specific prior written permission.
-//
-//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
-//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
-//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
-//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-//
-//////////////////////////////////////////////////////////////////////////////////////
-var RES;
-(function (RES) {
-    /**
-     * @class RES.ResourceLoader
-     * @classdesc
-     * @private
-     */
-    var ResourceLoader = (function () {
-        function ResourceLoader() {
-            /**
-             * 当前组加载的项总个数,key为groupName
-             */
-            this.groupTotalDic = {};
-            /**
-             * 已经加载的项个数,key为groupName
-             */
-            this.numLoadedDic = {};
-            /**
-             * 正在加载的组列表,key为groupName
-             */
-            this.itemListDic = {};
-            /**
-             * 加载失败的组,key为groupName
-             */
-            this.groupErrorDic = {};
-            this.retryTimesDic = {};
-            this.maxRetryTimes = 3;
-            /**
-             * 优先级队列,key为priority，value为groupName列表
-             */
-            this.priorityQueue = {};
-            this.reporterDic = {};
-            this.dispatcherDic = {};
-            this.failedList = new Array();
-            this.loadItemErrorDic = {};
-            this.errorDic = {};
-            this.loadingCount = 0;
-            this.thread = 4;
-            this.queueIndex = 0;
-        }
-        ResourceLoader.prototype.load = function (list, groupName, priority, reporter) {
-            var _this = this;
-            if (this.itemListDic[groupName]) {
-                if (!this.dispatcherDic[groupName]) {
-                    var dispatcher_1 = new egret.EventDispatcher();
-                    this.dispatcherDic[groupName] = dispatcher_1;
-                }
-                var promise_1 = new Promise(function (reslove, reject) {
-                    _this.dispatcherDic[groupName].addEventListener("complete", reslove, null);
-                    _this.dispatcherDic[groupName].addEventListener("error", function (e) {
-                        reject(e.data);
-                    }, null);
-                });
-                return promise_1;
-            }
-            var total = list.length;
-            for (var i = 0; i < total; i++) {
-                var resInfo = list[i];
-                if (!resInfo.groupNames) {
-                    resInfo.groupNames = [];
-                }
-                resInfo.groupNames.push(groupName);
-            }
-            this.itemListDic[groupName] = list;
-            this.groupTotalDic[groupName] = list.length;
-            this.numLoadedDic[groupName] = 0;
-            if (this.priorityQueue[priority])
-                this.priorityQueue[priority].push(groupName);
-            else
-                this.priorityQueue[priority] = [groupName];
-            this.reporterDic[groupName] = reporter;
-            var dispatcher = new egret.EventDispatcher();
-            this.dispatcherDic[groupName] = dispatcher;
-            var promise = new Promise(function (reslove, reject) {
-                dispatcher.addEventListener("complete", reslove, null);
-                dispatcher.addEventListener("error", function (e) {
-                    reject(e.data);
-                }, null);
-            });
-            this.next();
-            return promise;
-        };
-        ResourceLoader.prototype.next = function () {
-            var _this = this;
-            var _loop_1 = function () {
-                var r = this_1.getOneResourceInfo();
-                if (!r)
-                    return "break";
-                this_1.loadingCount++;
-                this_1.loadResource(r)
-                    .then(function (response) {
-                    _this.loadingCount--;
-                    RES.host.save(r, response);
-                    var groupName = r.groupNames.shift();
-                    if (r.groupNames.length == 0) {
-                        r.groupNames = undefined;
-                    }
-                    var reporter = _this.reporterDic[groupName];
-                    _this.numLoadedDic[groupName]++;
-                    var current = _this.numLoadedDic[groupName];
-                    var total = _this.groupTotalDic[groupName];
-                    if (reporter && reporter.onProgress) {
-                        reporter.onProgress(current, total);
-                    }
-                    if (current == total) {
-                        var groupError = _this.groupErrorDic[groupName];
-                        _this.removeGroupName(groupName);
-                        delete _this.groupTotalDic[groupName];
-                        delete _this.numLoadedDic[groupName];
-                        delete _this.itemListDic[groupName];
-                        delete _this.reporterDic[groupName];
-                        delete _this.groupErrorDic[groupName];
-                        var dispatcher = _this.dispatcherDic[groupName];
-                        if (groupError) {
-                            var itemList = _this.loadItemErrorDic[groupName];
-                            delete _this.loadItemErrorDic[groupName];
-                            var error = _this.errorDic[groupName];
-                            delete _this.errorDic[groupName];
-                            dispatcher.dispatchEventWith("error", false, { itemList: itemList, error: error });
-                        }
-                        else {
-                            dispatcher.dispatchEventWith("complete");
-                        }
-                    }
-                    _this.next();
-                }).catch(function (error) {
-                    if (!error) {
-                        throw r.name + " load fail";
-                    }
-                    if (!error.__resource_manager_error__) {
-                        throw error;
-                    }
-                    _this.loadingCount--;
-                    delete RES.host.state[r.root + r.name];
-                    var times = _this.retryTimesDic[r.name] || 1;
-                    if (times > _this.maxRetryTimes) {
-                        delete _this.retryTimesDic[r.name];
-                        var groupName = r.groupNames.shift();
-                        if (r.groupNames.length == 0) {
-                            delete r.groupNames;
-                        }
-                        if (!_this.loadItemErrorDic[groupName]) {
-                            _this.loadItemErrorDic[groupName] = [];
-                        }
-                        if (_this.loadItemErrorDic[groupName].indexOf(r) == -1) {
-                            _this.loadItemErrorDic[groupName].push(r);
-                        }
-                        _this.groupErrorDic[groupName] = true;
-                        var reporter = _this.reporterDic[groupName];
-                        _this.numLoadedDic[groupName]++;
-                        var current = _this.numLoadedDic[groupName];
-                        var total = _this.groupTotalDic[groupName];
-                        if (reporter && reporter.onProgress) {
-                            reporter.onProgress(current, total);
-                        }
-                        if (current == total) {
-                            var groupError = _this.groupErrorDic[groupName];
-                            _this.removeGroupName(groupName);
-                            delete _this.groupTotalDic[groupName];
-                            delete _this.numLoadedDic[groupName];
-                            delete _this.itemListDic[groupName];
-                            delete _this.groupErrorDic[groupName];
-                            delete _this.reporterDic[groupName];
-                            var itemList = _this.loadItemErrorDic[groupName];
-                            delete _this.loadItemErrorDic[groupName];
-                            var dispatcher = _this.dispatcherDic[groupName];
-                            dispatcher.dispatchEventWith("error", false, { itemList: itemList, error: error });
-                        }
-                        else {
-                            _this.errorDic[groupName] = error;
-                        }
-                        _this.next();
-                    }
-                    else {
-                        _this.retryTimesDic[r.name] = times + 1;
-                        _this.failedList.push(r);
-                        _this.next();
-                        return;
-                    }
-                });
-            };
-            var this_1 = this;
-            while (this.loadingCount < this.thread) {
-                var state_1 = _loop_1();
-                if (state_1 === "break")
-                    break;
-            }
-        };
-        /**
-         * 从优先级队列中移除指定的组名
-         */
-        ResourceLoader.prototype.removeGroupName = function (groupName) {
-            for (var p in this.priorityQueue) {
-                var queue_1 = this.priorityQueue[p];
-                var index = 0;
-                var found = false;
-                var length_1 = queue_1.length;
-                for (var i = 0; i < length_1; i++) {
-                    var name_1 = queue_1[i];
-                    if (name_1 == groupName) {
-                        queue_1.splice(index, 1);
-                        found = true;
-                        break;
-                    }
-                    index++;
-                }
-                if (found) {
-                    if (queue_1.length == 0) {
-                        delete this.priorityQueue[p];
-                    }
-                    break;
-                }
-            }
-        };
-        /**
-         * 获取下一个待加载项
-         */
-        ResourceLoader.prototype.getOneResourceInfo = function () {
-            if (this.failedList.length > 0)
-                return this.failedList.shift();
-            var maxPriority = Number.NEGATIVE_INFINITY;
-            for (var p in this.priorityQueue) {
-                maxPriority = Math.max(maxPriority, p);
-            }
-            var queue = this.priorityQueue[maxPriority];
-            if (!queue || queue.length == 0) {
-                return undefined;
-            }
-            var length = queue.length;
-            var list = [];
-            for (var i = 0; i < length; i++) {
-                if (this.queueIndex >= length)
-                    this.queueIndex = 0;
-                list = this.itemListDic[queue[this.queueIndex]];
-                if (list.length > 0)
-                    break;
-                this.queueIndex++;
-            }
-            if (list.length == 0)
-                return undefined;
-            return list.shift();
-        };
-        ResourceLoader.prototype.loadResource = function (r, p) {
-            if (!p) {
-                if (RES.FEATURE_FLAG.FIX_DUPLICATE_LOAD == 1) {
-                    var s = RES.host.state[r.root + r.name];
-                    if (s == 2) {
-                        return Promise.resolve(RES.host.get(r));
-                    }
-                    if (s == 1) {
-                        return r.promise;
-                    }
-                }
-                p = RES.processor.isSupport(r);
-            }
-            if (!p) {
-                throw new RES.ResourceManagerError(2001, r.name, r.type);
-            }
-            RES.host.state[r.root + r.name] = 1;
-            var promise = p.onLoadStart(RES.host, r);
-            r.promise = promise;
-            return promise;
-        };
-        ResourceLoader.prototype.unloadResource = function (r) {
-            var data = RES.host.get(r);
-            if (!data) {
-                console.warn("尝试释放不存在的资源:", r.name);
-                return Promise.resolve();
-            }
-            var p = RES.processor.isSupport(r);
-            if (p) {
-                // host.state[r.root + r.name] = 3;
-                var promise = p.onRemoveStart(RES.host, r);
-                RES.host.remove(r);
-                if (r.extra == 1) {
-                    RES.config.removeResourceData(r);
-                }
-                return promise;
-            }
-            else {
-                return Promise.resolve();
-            }
-        };
-        return ResourceLoader;
-    }());
-    RES.ResourceLoader = ResourceLoader;
-    __reflect(ResourceLoader.prototype, "RES.ResourceLoader");
 })(RES || (RES = {}));
 var RES;
 (function (RES) {
@@ -773,6 +732,37 @@ var RES;
     RES.ResourceManagerError = ResourceManagerError;
     __reflect(ResourceManagerError.prototype, "RES.ResourceManagerError");
 })(RES || (RES = {}));
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2014-present, Egret Technology.
+//  All rights reserved.
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
+//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//////////////////////////////////////////////////////////////////////////////////////
+var RES;
+(function (RES) {
+})(RES || (RES = {}));
 var RES;
 (function (RES) {
     RES.checkNull = function (target, propertyKey, descriptor) {
@@ -809,6 +799,150 @@ var RES;
 })(RES || (RES = {}));
 var RES;
 (function (RES) {
+    var NewFileSystem = (function () {
+        function NewFileSystem(data) {
+            this.data = data;
+        }
+        NewFileSystem.prototype.profile = function () {
+            console.log(this.data);
+        };
+        NewFileSystem.prototype.addFile = function (filename, type) {
+            if (!type)
+                type = "";
+            filename = RES.path.normalize(filename);
+            var basefilename = RES.path.basename(filename);
+            var folder = RES.path.dirname(filename);
+            if (!this.exists(folder)) {
+                this.mkdir(folder);
+            }
+            var d = this.reslove(folder);
+            d[basefilename] = { url: filename, type: type };
+        };
+        NewFileSystem.prototype.getFile = function (filename) {
+            var result = this.reslove(filename);
+            if (result) {
+                result.name = filename;
+            }
+            return result;
+        };
+        NewFileSystem.prototype.reslove = function (dirpath) {
+            if (dirpath == "") {
+                return this.data;
+            }
+            dirpath = RES.path.normalize(dirpath);
+            var list = dirpath.split("/");
+            var current = this.data;
+            for (var _i = 0, list_2 = list; _i < list_2.length; _i++) {
+                var f = list_2[_i];
+                if (current) {
+                    current = current[f];
+                }
+                else {
+                    return current;
+                }
+            }
+            return current;
+        };
+        NewFileSystem.prototype.mkdir = function (dirpath) {
+            dirpath = RES.path.normalize(dirpath);
+            var list = dirpath.split("/");
+            var current = this.data;
+            for (var _i = 0, list_3 = list; _i < list_3.length; _i++) {
+                var f = list_3[_i];
+                if (!current[f]) {
+                    current[f] = {};
+                }
+                current = current[f];
+            }
+        };
+        NewFileSystem.prototype.exists = function (dirpath) {
+            if (dirpath == "")
+                return true;
+            dirpath = RES.path.normalize(dirpath);
+            var list = dirpath.split("/");
+            var current = this.data;
+            for (var _i = 0, list_4 = list; _i < list_4.length; _i++) {
+                var f = list_4[_i];
+                if (!current[f]) {
+                    return false;
+                }
+                current = current[f];
+            }
+            return true;
+        };
+        return NewFileSystem;
+    }());
+    RES.NewFileSystem = NewFileSystem;
+    __reflect(NewFileSystem.prototype, "RES.NewFileSystem");
+})(RES || (RES = {}));
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//  Copyright (c) 2014-present, Egret Technology.
+//  All rights reserved.
+//  Redistribution and use in source and binary forms, with or without
+//  modification, are permitted provided that the following conditions are met:
+//
+//     * Redistributions of source code must retain the above copyright
+//       notice, this list of conditions and the following disclaimer.
+//     * Redistributions in binary form must reproduce the above copyright
+//       notice, this list of conditions and the following disclaimer in the
+//       documentation and/or other materials provided with the distribution.
+//     * Neither the name of the Egret nor the
+//       names of its contributors may be used to endorse or promote products
+//       derived from this software without specific prior written permission.
+//
+//  THIS SOFTWARE IS PROVIDED BY EGRET AND CONTRIBUTORS "AS IS" AND ANY EXPRESS
+//  OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+//  OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//  IN NO EVENT SHALL EGRET AND CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+//  INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+//  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;LOSS OF USE, DATA,
+//  OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+//  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+//  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
+//////////////////////////////////////////////////////////////////////////////////////
+var RES;
+(function (RES) {
+    /**
+     * @private
+     */
+    var NativeVersionController = (function () {
+        function NativeVersionController() {
+        }
+        NativeVersionController.prototype.init = function () {
+            this.versionInfo = this.getLocalData("all.manifest");
+            return Promise.resolve();
+        };
+        NativeVersionController.prototype.getVirtualUrl = function (url) {
+            return url;
+        };
+        NativeVersionController.prototype.getLocalData = function (filePath) {
+            if (egret_native.readUpdateFileSync && egret_native.readResourceFileSync) {
+                //先取更新目录
+                var content = egret_native.readUpdateFileSync(filePath);
+                if (content != null) {
+                    return JSON.parse(content);
+                }
+                //再取资源目录
+                content = egret_native.readResourceFileSync(filePath);
+                if (content != null) {
+                    return JSON.parse(content);
+                }
+            }
+            return null;
+        };
+        return NativeVersionController;
+    }());
+    RES.NativeVersionController = NativeVersionController;
+    __reflect(NativeVersionController.prototype, "RES.NativeVersionController", ["RES.IVersionController"]);
+    if (egret.Capabilities.runtimeType == egret.RuntimeType.NATIVE) {
+        RES.VersionController = NativeVersionController;
+    }
+})(RES || (RES = {}));
+var RES;
+(function (RES) {
     var processor;
     (function (processor_1) {
         function isSupport(resource) {
@@ -820,36 +954,19 @@ var RES;
         }
         processor_1.map = map;
         function promisify(loader, resource) {
-            return __awaiter(this, void 0, void 0, function () {
-                var _this = this;
-                return __generator(this, function (_a) {
-                    return [2 /*return*/, new Promise(function (reslove, reject) {
-                            var onSuccess = function () {
-                                var texture = loader['data'] ? loader['data'] : loader['response'];
-                                reslove(texture);
-                            };
-                            var onError = function () {
-                                var e = new RES.ResourceManagerError(1001, resource.url);
-                                reject(e);
-                            };
-                            loader.addEventListener(egret.Event.COMPLETE, onSuccess, _this);
-                            loader.addEventListener(egret.IOErrorEvent.IO_ERROR, onError, _this);
-                        })];
-                });
+            var _this = this;
+            return new Promise(function (reslove, reject) {
+                var onSuccess = function () {
+                    var texture = loader['data'] ? loader['data'] : loader['response'];
+                    reslove(texture);
+                };
+                var onError = function () {
+                    var e = new RES.ResourceManagerError(1001, resource.url);
+                    reject(e);
+                };
+                loader.addEventListener(egret.Event.COMPLETE, onSuccess, _this);
+                loader.addEventListener(egret.IOErrorEvent.IO_ERROR, onError, _this);
             });
-        }
-        function getURL(resource) {
-            if (resource.url.indexOf("://") != -1) {
-                return resource.url;
-            }
-            var prefix = resource.root;
-            var url = prefix + resource.url;
-            if (RES['getRealURL']) {
-                return RES['getRealURL'](url);
-            }
-            else {
-                return url;
-            }
         }
         function getRelativePath(url, file) {
             if (file.indexOf("://") != -1) {
@@ -874,181 +991,118 @@ var RES;
         // var cache: {[index:string]:egret.Texture} = {};
         processor_1.ImageProcessor = {
             onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var loader, bitmapData, texture, r, list;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                loader = new egret.ImageLoader();
-                                loader.load(getURL(resource));
-                                return [4 /*yield*/, promisify(loader, resource)];
-                            case 1:
-                                bitmapData = _a.sent();
-                                texture = new egret.Texture();
-                                texture._setBitmapData(bitmapData);
-                                r = host.resourceConfig.getResource(resource.name);
-                                if (r && r.scale9grid) {
-                                    list = r.scale9grid.split(",");
-                                    texture["scale9Grid"] = new egret.Rectangle(parseInt(list[0]), parseInt(list[1]), parseInt(list[2]), parseInt(list[3]));
-                                }
-                                // var config: any = resItem.data;
-                                // if (config && config["scale9grid"]) {
-                                //     
-                                // }
-                                return [2 /*return*/, texture];
-                        }
-                    });
+                var loader = new egret.ImageLoader();
+                loader.load(RES.getVirtualUrl(resource.root + resource.url));
+                return promisify(loader, resource)
+                    .then(function (bitmapData) {
+                    var texture = new egret.Texture();
+                    texture._setBitmapData(bitmapData);
+                    var r = host.resourceConfig.getResource(resource.name);
+                    if (r && r.scale9grid) {
+                        var list = r.scale9grid.split(",");
+                        texture["scale9Grid"] = new egret.Rectangle(parseInt(list[0]), parseInt(list[1]), parseInt(list[2]), parseInt(list[3]));
+                    }
+                    return texture;
                 });
             },
             onRemoveStart: function (host, resource) {
                 var texture = host.get(resource);
                 texture.dispose();
-                return Promise.resolve();
             }
         };
         processor_1.BinaryProcessor = {
             onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var request, arraybuffer;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                request = new egret.HttpRequest();
-                                request.responseType = egret.HttpResponseType.ARRAY_BUFFER;
-                                request.open(getURL(resource), "get");
-                                request.send();
-                                return [4 /*yield*/, promisify(request, resource)];
-                            case 1:
-                                arraybuffer = _a.sent();
-                                return [2 /*return*/, arraybuffer];
-                        }
-                    });
-                });
+                var request = new egret.HttpRequest();
+                request.responseType = egret.HttpResponseType.ARRAY_BUFFER;
+                request.open(RES.getVirtualUrl(resource.root + resource.url), "get");
+                request.send();
+                return promisify(request, resource);
+                // let arraybuffer = await promisify(request, resource);
+                // return arraybuffer;
             },
             onRemoveStart: function (host, resource) {
-                return Promise.resolve();
             }
         };
         processor_1.TextProcessor = {
             onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var request, text;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                request = new egret.HttpRequest();
-                                request.responseType = egret.HttpResponseType.TEXT;
-                                request.open(getURL(resource), "get");
-                                request.send();
-                                return [4 /*yield*/, promisify(request, resource)];
-                            case 1:
-                                text = _a.sent();
-                                return [2 /*return*/, text];
-                        }
-                    });
-                });
+                var request = new egret.HttpRequest();
+                request.responseType = egret.HttpResponseType.TEXT;
+                request.open(RES.getVirtualUrl(resource.root + resource.url), "get");
+                request.send();
+                return promisify(request, resource);
+                // let text = await promisify(request, resource);
+                // return text;
             },
             onRemoveStart: function (host, resource) {
-                return Promise.resolve();
+                return true;
             }
         };
         processor_1.JsonProcessor = {
             onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var text, data;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, host.load(resource, 'text')];
-                            case 1:
-                                text = _a.sent();
-                                data = JSON.parse(text);
-                                return [2 /*return*/, data];
-                        }
-                    });
+                // let text = await host.load(resource, 'text');
+                return host.load(resource, 'text').then(function (text) {
+                    var data = JSON.parse(text);
+                    return data;
                 });
             },
             onRemoveStart: function (host, request) {
-                return Promise.resolve();
             }
         };
         processor_1.XMLProcessor = {
             onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var text, data;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, host.load(resource, 'text')];
-                            case 1:
-                                text = _a.sent();
-                                data = egret.XML.parse(text);
-                                return [2 /*return*/, data];
-                        }
-                    });
+                return host.load(resource, 'text').then(function (text) {
+                    var data = egret.XML.parse(text);
+                    return data;
                 });
             },
             onRemoveStart: function (host, resource) {
-                return Promise.resolve();
+                return true;
             }
         };
         processor_1.CommonJSProcessor = {
             onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var text, f, require, exports;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, host.load(resource, 'text')];
-                            case 1:
-                                text = _a.sent();
-                                f = new Function('require', 'exports', text);
-                                require = function () { };
-                                exports = {};
-                                try {
-                                    f(require, exports);
-                                }
-                                catch (e) {
-                                    throw new RES.ResourceManagerError(2003, resource.name, e.message);
-                                }
-                                return [2 /*return*/, exports];
-                        }
-                    });
+                // let text = await host.load(resource, 'text');
+                return host.load(resource, 'text').then(function (text) {
+                    var f = new Function('require', 'exports', text);
+                    var require = function () { };
+                    var exports = {};
+                    try {
+                        f(require, exports);
+                    }
+                    catch (e) {
+                        throw new RES.ResourceManagerError(2003, resource.name, e.message);
+                    }
+                    return exports;
                 });
             },
             onRemoveStart: function (host, resource) {
-                return Promise.resolve();
             }
         };
         processor_1.SheetProcessor = {
             onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var data, r, imageName, texture, frames, spriteSheet, subkey, config, texture, str, list;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, host.load(resource, "json")];
-                            case 1:
-                                data = _a.sent();
-                                r = host.resourceConfig.getResource(RES.nameSelector(data.file));
-                                if (!r) {
-                                    imageName = getRelativePath(resource.url, data.file);
-                                    r = { name: imageName, url: imageName, type: 'image', root: resource.root };
-                                }
-                                return [4 /*yield*/, host.load(r)];
-                            case 2:
-                                texture = _a.sent();
-                                frames = data.frames;
-                                spriteSheet = new egret.SpriteSheet(texture);
-                                spriteSheet["$resourceInfo"] = r;
-                                for (subkey in frames) {
-                                    config = frames[subkey];
-                                    texture = spriteSheet.createTexture(subkey, config.x, config.y, config.w, config.h, config.offX, config.offY, config.sourceW, config.sourceH);
-                                    if (config["scale9grid"]) {
-                                        str = config["scale9grid"];
-                                        list = str.split(",");
-                                        texture["scale9Grid"] = new egret.Rectangle(parseInt(list[0]), parseInt(list[1]), parseInt(list[2]), parseInt(list[3]));
-                                    }
-                                }
-                                host.save(r, texture);
-                                return [2 /*return*/, spriteSheet];
+                // let data = await host.load(resource, "json");
+                return host.load(resource, "json").then(function (data) {
+                    var r = host.resourceConfig.getResource(RES.nameSelector(data.file));
+                    if (!r) {
+                        var imageName = getRelativePath(resource.url, data.file);
+                        r = { name: imageName, url: imageName, type: 'image', root: resource.root };
+                    }
+                    return host.load(r)
+                        .then(function (bitmapData) {
+                        var frames = data.frames;
+                        var spriteSheet = new egret.SpriteSheet(bitmapData);
+                        spriteSheet["$resourceInfo"] = r;
+                        for (var subkey in frames) {
+                            var config = frames[subkey];
+                            var texture = spriteSheet.createTexture(subkey, config.x, config.y, config.w, config.h, config.offX, config.offY, config.sourceW, config.sourceH);
+                            if (config["scale9grid"]) {
+                                var str = config["scale9grid"];
+                                var list = str.split(",");
+                                texture["scale9Grid"] = new egret.Rectangle(parseInt(list[0]), parseInt(list[1]), parseInt(list[2]), parseInt(list[3]));
+                            }
                         }
+                        host.save(r, bitmapData);
+                        return spriteSheet;
                     });
                 });
             },
@@ -1066,7 +1120,6 @@ var RES;
                 var r = sheet["$resourceInfo"];
                 sheet.dispose();
                 host.unload(r);
-                return Promise.resolve();
             }
         };
         var fontGetTexturePath = function (url, fntText) {
@@ -1091,38 +1144,33 @@ var RES;
         };
         processor_1.FontProcessor = {
             onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var data, config, imageName, r, texture, font;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, host.load(resource, 'text')];
-                            case 1:
-                                data = _a.sent();
-                                try {
-                                    config = JSON.parse(data);
-                                }
-                                catch (e) {
-                                    config = data;
-                                }
-                                if (typeof config === 'string') {
-                                    imageName = fontGetTexturePath(resource.url, config);
-                                }
-                                else {
-                                    imageName = getRelativePath(resource.url, config.file);
-                                }
-                                r = host.resourceConfig.getResource(RES.nameSelector(imageName));
-                                if (!r) {
-                                    r = { name: imageName, url: imageName, type: 'image', root: resource.root };
-                                }
-                                return [4 /*yield*/, host.load(r)];
-                            case 2:
-                                texture = _a.sent();
-                                font = new egret.BitmapFont(texture, config);
-                                font["$resourceInfo"] = r;
-                                // todo refactor
-                                host.save(r, texture);
-                                return [2 /*return*/, font];
-                        }
+                // let data: string = await host.load(resource, 'text');
+                return host.load(resource, 'text').then(function (data) {
+                    var config;
+                    try {
+                        config = JSON.parse(data);
+                    }
+                    catch (e) {
+                        config = data;
+                    }
+                    var imageName;
+                    if (typeof config === 'string') {
+                        imageName = fontGetTexturePath(resource.url, config);
+                    }
+                    else {
+                        imageName = getRelativePath(resource.url, config.file);
+                    }
+                    var r = host.resourceConfig.getResource(RES.nameSelector(imageName));
+                    if (!r) {
+                        r = { name: imageName, url: imageName, type: 'image', root: resource.root };
+                    }
+                    // var texture: egret.Texture = await host.load(r);
+                    return host.load(r).then(function (texture) {
+                        var font = new egret.BitmapFont(texture, config);
+                        font["$resourceInfo"] = r;
+                        // todo refactor
+                        host.save(r, texture);
+                        return font;
                     });
                 });
             },
@@ -1130,28 +1178,18 @@ var RES;
                 var font = host.get(resource);
                 var r = font["$resourceInfo"];
                 host.unload(r);
-                return Promise.resolve();
             }
         };
         processor_1.SoundProcessor = {
             onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var sound;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0:
-                                sound = new egret.Sound();
-                                sound.load(getURL(resource));
-                                return [4 /*yield*/, promisify(sound, resource)];
-                            case 1:
-                                _a.sent();
-                                return [2 /*return*/, sound];
-                        }
-                    });
+                var sound = new egret.Sound();
+                sound.load(RES.getVirtualUrl(resource.root + resource.url));
+                return promisify(sound, resource).then(function () {
+                    return sound;
                 });
+                // return sound;
             },
             onRemoveStart: function (host, resource) {
-                return Promise.resolve();
             }
         };
         processor_1.MovieClipProcessor = {
@@ -1183,24 +1221,17 @@ var RES;
                 var jsonPath = resource.name;
                 var imagePath = jsonPath.substring(0, jsonPath.lastIndexOf(".")) + ".png";
                 var imageResource = host.resourceConfig.getResource(imagePath, true);
-                return host.unload(imageResource);
+                host.unload(imageResource);
             }
         };
         processor_1.MergeJSONProcessor = {
             onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var data, key;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, host.load(resource, 'json')];
-                            case 1:
-                                data = _a.sent();
-                                for (key in data) {
-                                    RES.config.addSubkey(key, resource.name);
-                                }
-                                return [2 /*return*/, data];
-                        }
-                    });
+                // let data = await host.load(resource, 'json');
+                return host.load(resource, 'json').then(function (data) {
+                    for (var key in data) {
+                        RES.config.addSubkey(key, resource.name);
+                    }
+                    return data;
                 });
             },
             getData: function (host, resource, key, subkey) {
@@ -1214,34 +1245,6 @@ var RES;
                 }
             },
             onRemoveStart: function (host, resource) {
-                return Promise.resolve();
-            }
-        };
-        processor_1.ResourceConfigProcessor = {
-            onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var data, fileSystem;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, host.load(resource, 'commonjs')];
-                            case 1:
-                                data = _a.sent();
-                                fileSystem = new RES.NewFileSystem(data.resources);
-                                data.fileSystem = fileSystem;
-                                delete data.resource;
-                                RES.resourceTypeSelector = data.typeSelector;
-                                RES.resourceNameSelector = data.nameSelector ? data.nameSelector : function (p) { return p; };
-                                return [2 /*return*/, data];
-                        }
-                    });
-                });
-            },
-            onRemoveStart: function () {
-                return __awaiter(this, void 0, void 0, function () {
-                    return __generator(this, function (_a) {
-                        return [2 /*return*/];
-                    });
-                });
             }
         };
         processor_1.LegacyResourceConfigProcessor = {
@@ -1276,7 +1279,12 @@ var RES;
                     var groups = resConfigData.groups;
                     for (var _i = 0, _a = data.groups; _i < _a.length; _i++) {
                         var g = _a[_i];
-                        groups[g.name] = g.keys.split(",");
+                        if (g.keys == "") {
+                            groups[g.name] = [];
+                        }
+                        else {
+                            groups[g.name] = g.keys.split(",");
+                        }
                     }
                     var alias = resConfigData.alias;
                     var fsData = fileSystem['fsData'];
@@ -1300,207 +1308,6 @@ var RES;
                 });
             },
             onRemoveStart: function () {
-                return __awaiter(this, void 0, void 0, function () { return __generator(this, function (_a) {
-                    return [2 /*return*/];
-                }); });
-            }
-        };
-        var PVRParser = (function () {
-            function PVRParser() {
-            }
-            PVRParser.parse = function (arrayBuffer, callback, errorCallback) {
-                // the header length of int32
-                var headerIntLength = 13;
-                // get header part of arrayBuffer
-                var header = new Uint32Array(arrayBuffer, 0, headerIntLength);
-                // separate buffer and header
-                var pvrDatas = {
-                    buffer: arrayBuffer,
-                    header: header
-                };
-                // PVR v3
-                if (header[0] === 0x03525650) {
-                    PVRParser._parseV3(pvrDatas, callback, errorCallback);
-                }
-                else if (header[11] === 0x21525650) {
-                    PVRParser._parseV2(pvrDatas, callback, errorCallback);
-                }
-                else {
-                    errorCallback(pvrDatas, "pvr parse error!");
-                }
-            };
-            PVRParser._parseV2 = function (pvrDatas, callback, errorCallback) {
-                var header = pvrDatas.header;
-                var headerLength = header[0], height = header[1], width = header[2], numMipmaps = header[3], flags = header[4], dataLength = header[5], bpp = header[6], bitmaskRed = header[7], bitmaskGreen = header[8], bitmaskBlue = header[9], bitmaskAlpha = header[10], pvrTag = header[11], numSurfs = header[12];
-                var TYPE_MASK = 0xff;
-                var PVRTC_2 = 24, PVRTC_4 = 25;
-                var formatFlags = flags & TYPE_MASK;
-                var bpp, format;
-                var _hasAlpha = bitmaskAlpha > 0;
-                if (formatFlags === PVRTC_4) {
-                    format = _hasAlpha ? PVRParser.COMPRESSED_RGBA_PVRTC_4BPPV1_IMG : PVRParser.COMPRESSED_RGB_PVRTC_4BPPV1_IMG;
-                    bpp = 4;
-                }
-                else if (formatFlags === PVRTC_2) {
-                    format = _hasAlpha ? PVRParser.COMPRESSED_RGBA_PVRTC_2BPPV1_IMG : PVRParser.COMPRESSED_RGB_PVRTC_2BPPV1_IMG;
-                    bpp = 2;
-                }
-                else {
-                    errorCallback(pvrDatas, "pvr v2 parse error");
-                    console.log("unknow format flags::" + formatFlags);
-                }
-                var dataOffset = headerLength;
-                pvrDatas.pvrtcData = new Uint8Array(pvrDatas.buffer, dataOffset);
-                pvrDatas.bpp = bpp;
-                pvrDatas.format = format;
-                pvrDatas.width = width;
-                pvrDatas.height = height;
-                pvrDatas.surfacesCount = numSurfs;
-                pvrDatas.mipmapsCount = numMipmaps + 1;
-                // guess cubemap type seems tricky in v2
-                // it juste a pvr containing 6 surface (no explicit cubemap type)
-                pvrDatas.isCubemap = (pvrDatas.surfacesCount === 6);
-                callback(pvrDatas);
-            };
-            PVRParser._parseV3 = function (pvrDatas, callback, errorCallback) {
-                var header = pvrDatas.header;
-                var bpp, format;
-                var pixelFormat = header[2];
-                switch (pixelFormat) {
-                    case 0:// PVRTC 2bpp RGB
-                        bpp = 2;
-                        format = PVRParser.COMPRESSED_RGB_PVRTC_2BPPV1_IMG;
-                        break;
-                    case 1:// PVRTC 2bpp RGBA
-                        bpp = 2;
-                        format = PVRParser.COMPRESSED_RGBA_PVRTC_2BPPV1_IMG;
-                        break;
-                    case 2:// PVRTC 4bpp RGB
-                        bpp = 4;
-                        format = PVRParser.COMPRESSED_RGB_PVRTC_4BPPV1_IMG;
-                        break;
-                    case 3:// PVRTC 4bpp RGBA
-                        bpp = 4;
-                        format = PVRParser.COMPRESSED_RGBA_PVRTC_4BPPV1_IMG;
-                        break;
-                    default:
-                        errorCallback(pvrDatas, "pvr v3 parse error");
-                        console.log("unknow pixel format::" + pixelFormat);
-                }
-                var dataOffset = 52 + header[12];
-                pvrDatas.pvrtcData = new Uint8Array(pvrDatas.buffer, dataOffset);
-                pvrDatas.bpp = bpp;
-                pvrDatas.format = format;
-                pvrDatas.width = header[7];
-                pvrDatas.height = header[6];
-                pvrDatas.surfacesCount = header[10];
-                pvrDatas.mipmapsCount = header[11];
-                pvrDatas.isCubemap = (pvrDatas.surfacesCount === 6);
-                callback(pvrDatas);
-            };
-            PVRParser.COMPRESSED_RGB_PVRTC_4BPPV1_IMG = 0x8C00;
-            PVRParser.COMPRESSED_RGB_PVRTC_2BPPV1_IMG = 0x8C01;
-            PVRParser.COMPRESSED_RGBA_PVRTC_4BPPV1_IMG = 0x8C02;
-            PVRParser.COMPRESSED_RGBA_PVRTC_2BPPV1_IMG = 0x8C03;
-            return PVRParser;
-        }());
-        __reflect(PVRParser.prototype, "PVRParser");
-        if (typeof egret != 'undefined' && egret && egret["web"] && egret["web"].WebGLRenderContext) {
-            // Calcualates the size of a compressed texture level in bytes
-            function textureLevelSize(format, width, height) {
-                switch (format) {
-                    case PVRParser.COMPRESSED_RGB_PVRTC_4BPPV1_IMG:
-                    case PVRParser.COMPRESSED_RGBA_PVRTC_4BPPV1_IMG:
-                        return Math.floor((Math.max(width, 8) * Math.max(height, 8) * 4 + 7) / 8);
-                    case PVRParser.COMPRESSED_RGB_PVRTC_2BPPV1_IMG:
-                    case PVRParser.COMPRESSED_RGBA_PVRTC_2BPPV1_IMG:
-                        return Math.floor((Math.max(width, 16) * Math.max(height, 8) * 2 + 7) / 8);
-                    default:
-                        return 0;
-                }
-            }
-            egret["web"].WebGLRenderContext.prototype.createTextureFromCompressedData = function (data, width, height, levels, internalFormat) {
-                var gl = this.context;
-                if (!this.pvrtcExt) {
-                    this.pvrtcExt = gl.getExtension("WEBKIT_WEBGL_compressed_texture_pvrtc");
-                }
-                var texture = gl.createTexture();
-                gl.bindTexture(gl.TEXTURE_2D, texture);
-                var offset = 0;
-                // Loop through each mip level of compressed texture data provided and upload it to the given texture.
-                for (var i = 0; i < levels; ++i) {
-                    // Determine how big this level of compressed texture data is in bytes.
-                    var levelSize = textureLevelSize(internalFormat, width, height);
-                    // Get a view of the bytes for this level of DXT data.
-                    var dxtLevel = new Uint8Array(data.buffer, data.byteOffset + offset, levelSize);
-                    // Upload!
-                    gl.compressedTexImage2D(gl.TEXTURE_2D, i, internalFormat, width, height, 0, dxtLevel);
-                    // The next mip level will be half the height and width of this one.
-                    width = width >> 1;
-                    if (width < 1)
-                        width = 1;
-                    height = height >> 1;
-                    if (height < 1)
-                        height = 1;
-                    // Advance the offset into the compressed texture data past the current mip level's data.
-                    offset += levelSize;
-                }
-                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-                return texture;
-            };
-        }
-        processor_1.PVRProcessor = {
-            onLoadStart: function (host, resource) {
-                return __awaiter(this, void 0, void 0, function () {
-                    var arraybuffer, width, height, borderWidth, borderHeight, byteArray, list, pvrDataBuffer, i, buffer, dataLength, self, texture;
-                    return __generator(this, function (_a) {
-                        switch (_a.label) {
-                            case 0: return [4 /*yield*/, host.load(resource, 'bin')];
-                            case 1:
-                                arraybuffer = _a.sent();
-                                width = 512;
-                                height = 512;
-                                borderWidth = 0;
-                                borderHeight = 0;
-                                byteArray = new egret.ByteArray(arraybuffer);
-                                byteArray.position = 7;
-                                list = ["body", "ext"];
-                                for (i = 0; i < list.length; i++) {
-                                    buffer = void 0;
-                                    switch (list[i]) {
-                                        case "body":
-                                            byteArray.position += 2;
-                                            dataLength = byteArray.readUnsignedInt();
-                                            pvrDataBuffer = byteArray.buffer.slice(byteArray.position, byteArray.position + dataLength);
-                                            byteArray.position += dataLength;
-                                            break;
-                                        case "ext":
-                                            byteArray.position += 6;
-                                            width = byteArray.readUnsignedShort();
-                                            height = byteArray.readUnsignedShort();
-                                            borderWidth = byteArray.readUnsignedShort();
-                                            borderHeight = byteArray.readUnsignedShort();
-                                            break;
-                                    }
-                                }
-                                self = this;
-                                PVRParser.parse(pvrDataBuffer, function (pvrData) {
-                                    var bitmapData = new egret.BitmapData(pvrData);
-                                    bitmapData.format = "pvr";
-                                    texture = new egret.Texture();
-                                    texture._setBitmapData(bitmapData);
-                                    texture.$initData(borderWidth, borderHeight, width, height, 0, 0, width, height, bitmapData.width, bitmapData.height);
-                                }, function () {
-                                    console.log("pvr error");
-                                });
-                                return [2 /*return*/, texture];
-                        }
-                    });
-                });
-            },
-            onRemoveStart: function (host, resource) {
-                return Promise.resolve();
             }
         };
         processor_1._map = {
@@ -1514,90 +1321,10 @@ var RES;
             "commonjs": processor_1.CommonJSProcessor,
             "sound": processor_1.SoundProcessor,
             "movieclip": processor_1.MovieClipProcessor,
-            "pvr": processor_1.PVRProcessor,
             "mergeJson": processor_1.MergeJSONProcessor,
-            "resourceConfig": processor_1.ResourceConfigProcessor,
             "legacyResourceConfig": processor_1.LegacyResourceConfigProcessor,
         };
     })(processor = RES.processor || (RES.processor = {}));
-})(RES || (RES = {}));
-var RES;
-(function (RES) {
-    var NewFileSystem = (function () {
-        function NewFileSystem(data) {
-            this.data = data;
-        }
-        NewFileSystem.prototype.profile = function () {
-            console.log(this.data);
-        };
-        NewFileSystem.prototype.addFile = function (filename, type) {
-            if (!type)
-                type = "";
-            filename = RES.path.normalize(filename);
-            var basefilename = RES.path.basename(filename);
-            var folder = RES.path.dirname(filename);
-            if (!this.exists(folder)) {
-                this.mkdir(folder);
-            }
-            var d = this.reslove(folder);
-            d[basefilename] = { url: filename, type: type };
-        };
-        NewFileSystem.prototype.getFile = function (filename) {
-            var result = this.reslove(filename);
-            if (result) {
-                result.name = filename;
-            }
-            return result;
-        };
-        NewFileSystem.prototype.reslove = function (dirpath) {
-            if (dirpath == "") {
-                return this.data;
-            }
-            dirpath = RES.path.normalize(dirpath);
-            var list = dirpath.split("/");
-            var current = this.data;
-            for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
-                var f = list_1[_i];
-                if (current) {
-                    current = current[f];
-                }
-                else {
-                    return current;
-                }
-            }
-            return current;
-        };
-        NewFileSystem.prototype.mkdir = function (dirpath) {
-            dirpath = RES.path.normalize(dirpath);
-            var list = dirpath.split("/");
-            var current = this.data;
-            for (var _i = 0, list_2 = list; _i < list_2.length; _i++) {
-                var f = list_2[_i];
-                if (!current[f]) {
-                    current[f] = {};
-                }
-                current = current[f];
-            }
-        };
-        NewFileSystem.prototype.exists = function (dirpath) {
-            if (dirpath == "")
-                return true;
-            dirpath = RES.path.normalize(dirpath);
-            var list = dirpath.split("/");
-            var current = this.data;
-            for (var _i = 0, list_3 = list; _i < list_3.length; _i++) {
-                var f = list_3[_i];
-                if (!current[f]) {
-                    return false;
-                }
-                current = current[f];
-            }
-            return true;
-        };
-        return NewFileSystem;
-    }());
-    RES.NewFileSystem = NewFileSystem;
-    __reflect(NewFileSystem.prototype, "RES.NewFileSystem");
 })(RES || (RES = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -2006,46 +1733,6 @@ var RES;
             return path.substr(0, path.lastIndexOf("/"));
         };
     })(path = RES.path || (RES.path = {}));
-})(RES || (RES = {}));
-var RES;
-(function (RES) {
-    var versionInfo;
-    /**
-     * @internal
-     */
-    function native_init() {
-        if (egret.Capabilities.runtimeType == egret.RuntimeType.NATIVE) {
-            versionInfo = getLocalData("all.manifest");
-        }
-    }
-    RES.native_init = native_init;
-    /**
-     * @internal
-     */
-    function getRealURL(url) {
-        if (versionInfo && versionInfo[url]) {
-            return "resource/" + versionInfo[url].v.substring(0, 2) + "/" + versionInfo[url].v + "_" + versionInfo[url].s + "." + url.substring(url.lastIndexOf(".") + 1);
-        }
-        else {
-            return url;
-        }
-    }
-    RES.getRealURL = getRealURL;
-    function getLocalData(filePath) {
-        if (egret_native.readUpdateFileSync && egret_native.readResourceFileSync) {
-            //先取更新目录
-            var content = egret_native.readUpdateFileSync(filePath);
-            if (content != null) {
-                return JSON.parse(content);
-            }
-            //再取资源目录
-            content = egret_native.readResourceFileSync(filePath);
-            if (content != null) {
-                return JSON.parse(content);
-            }
-        }
-        return null;
-    }
 })(RES || (RES = {}));
 //////////////////////////////////////////////////////////////////////////////////////
 //
@@ -2479,26 +2166,92 @@ var RES;
     }
     RES.$addResourceData = $addResourceData;
     /**
+        * Returns the VersionController
+        * @version Egret 2.5
+        * @platform Web,Native
+        * @language en_US
+        */
+    /**
+     * 获得版本控制器.
+     * @version Egret 2.5
+     * @platform Web,Native
+     * @language zh_CN
+     */
+    function getVersionController() {
+        if (!instance)
+            instance = new Resource();
+        return instance.vcs;
+    }
+    RES.getVersionController = getVersionController;
+    /**
+         * Register the VersionController
+         * @param vcs The VersionController to register.
+         * @version Egret 2.5
+         * @platform Web,Native
+         * @language en_US
+         */
+    /**
+     * 注册版本控制器,通过RES模块加载资源时会从版本控制器获取真实url
+     * @param vcs 注入的版本控制器。
+     * @version Egret 2.5
+     * @platform Web,Native
+     * @language zh_CN
+     */
+    function registerVersionController(vcs) {
+        if (!instance)
+            instance = new Resource();
+        instance.registerVersionController(vcs);
+    }
+    RES.registerVersionController = registerVersionController;
+    function getVirtualUrl(url) {
+        if (instance.vcs) {
+            return instance.vcs.getVirtualUrl(url);
+        }
+        else {
+            return url;
+        }
+    }
+    RES.getVirtualUrl = getVirtualUrl;
+    /**
      * @private
      */
     var Resource = (function (_super) {
         __extends(Resource, _super);
         function Resource() {
-            return _super !== null && _super.apply(this, arguments) || this;
+            var _this = _super.call(this) || this;
+            _this.isVcsInit = false;
+            if (RES.VersionController) {
+                _this.vcs = new RES.VersionController();
+            }
+            return _this;
         }
+        Resource.prototype.registerVersionController = function (vcs) {
+            this.vcs = vcs;
+            this.isVcsInit = false;
+        };
         /**
          * 开始加载配置
          * @method RES.loadConfig
          */
         Resource.prototype.loadConfig = function () {
             var _this = this;
-            RES.native_init();
-            return RES.config.init().then(function (data) {
-                RES.ResourceEvent.dispatchResourceEvent(_this, RES.ResourceEvent.CONFIG_COMPLETE);
-            }, function (error) {
-                RES.ResourceEvent.dispatchResourceEvent(_this, RES.ResourceEvent.CONFIG_LOAD_ERROR);
-                return Promise.reject(error);
-            });
+            var normalCall = function () {
+                return RES.config.init().then(function (data) {
+                    RES.ResourceEvent.dispatchResourceEvent(_this, RES.ResourceEvent.CONFIG_COMPLETE);
+                }, function (error) {
+                    RES.ResourceEvent.dispatchResourceEvent(_this, RES.ResourceEvent.CONFIG_LOAD_ERROR);
+                    return Promise.reject(error);
+                });
+            };
+            if (!this.isVcsInit && this.vcs) {
+                this.isVcsInit = true;
+                return this.vcs.init().then(function () {
+                    return normalCall();
+                });
+            }
+            else {
+                return normalCall();
+            }
         };
         /**
          * 检查某个资源组是否已经加载完成
@@ -2527,22 +2280,30 @@ var RES;
             var _this = this;
             if (priority === void 0) { priority = 0; }
             var reporterDelegate = {
-                onProgress: function (current, total) {
+                onProgress: function (current, total, resItem) {
                     if (reporter && reporter.onProgress) {
-                        reporter.onProgress(current, total);
+                        reporter.onProgress(current, total, resItem);
                     }
-                    RES.ResourceEvent.dispatchResourceEvent(_this, RES.ResourceEvent.GROUP_PROGRESS, name, undefined, current, total);
+                    RES.ResourceEvent.dispatchResourceEvent(_this, RES.ResourceEvent.GROUP_PROGRESS, name, resItem, current, total);
                 }
             };
             return this._loadGroup(name, priority, reporterDelegate).then(function (data) {
+                if (RES.config.config.loadGroup.indexOf(name) == -1) {
+                    RES.config.config.loadGroup.push(name);
+                }
                 RES.ResourceEvent.dispatchResourceEvent(_this, RES.ResourceEvent.GROUP_COMPLETE, name);
             }, function (error) {
-                var itemList = error.itemList;
-                var length = itemList.length;
-                for (var i = 0; i < length; i++) {
-                    var item = itemList[i];
-                    delete item.promise;
-                    RES.ResourceEvent.dispatchResourceEvent(_this, RES.ResourceEvent.ITEM_LOAD_ERROR, name, item);
+                if (RES.config.config.loadGroup.indexOf(name) == -1) {
+                    RES.config.config.loadGroup.push(name);
+                }
+                if (error.itemList) {
+                    var itemList = error.itemList;
+                    var length_1 = itemList.length;
+                    for (var i = 0; i < length_1; i++) {
+                        var item = itemList[i];
+                        delete item.promise;
+                        RES.ResourceEvent.dispatchResourceEvent(_this, RES.ResourceEvent.ITEM_LOAD_ERROR, name, item);
+                    }
                 }
                 RES.ResourceEvent.dispatchResourceEvent(_this, RES.ResourceEvent.GROUP_LOAD_ERROR, name);
                 return Promise.reject(error.error);
@@ -2551,6 +2312,11 @@ var RES;
         Resource.prototype._loadGroup = function (name, priority, reporter) {
             if (priority === void 0) { priority = 0; }
             var resources = RES.config.getGroupByName(name, true);
+            if (resources.length == 0) {
+                return new Promise(function (reslove, reject) {
+                    reject({ error: new RES.ResourceManagerError(2006, name) });
+                });
+            }
             return RES.queue.load(resources, name, priority, reporter);
         };
         Resource.prototype.loadResources = function (keys, reporter) {
@@ -2671,42 +2437,53 @@ var RES;
          */
         Resource.prototype.destroyRes = function (name, force) {
             if (force === void 0) { force = true; }
-            return __awaiter(this, void 0, void 0, function () {
-                var group, remove, _i, group_2, item, item;
-                return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            group = RES.config.getGroup(name);
-                            remove = function (r) {
-                                return RES.queue.unloadResource(r);
-                            };
-                            if (!(group && group.length > 0)) return [3 /*break*/, 5];
-                            _i = 0, group_2 = group;
-                            _a.label = 1;
-                        case 1:
-                            if (!(_i < group_2.length)) return [3 /*break*/, 4];
-                            item = group_2[_i];
-                            return [4 /*yield*/, remove(item)];
-                        case 2:
-                            _a.sent();
-                            _a.label = 3;
-                        case 3:
-                            _i++;
-                            return [3 /*break*/, 1];
-                        case 4: return [2 /*return*/, true];
-                        case 5:
-                            item = RES.config.getResource(name);
-                            if (!item) return [3 /*break*/, 7];
-                            return [4 /*yield*/, remove(item)];
-                        case 6:
-                            _a.sent();
-                            return [2 /*return*/, true];
-                        case 7:
-                            console.warn("\u65E0\u6CD5\u5220\u9664\u6307\u5B9A\u7EC4:" + name);
-                            return [2 /*return*/, false];
+            var group = RES.config.getGroup(name);
+            if (group && group.length > 0) {
+                if (force || (RES.config.config.loadGroup.length == 1 && RES.config.config.loadGroup[0] == name)) {
+                    for (var _i = 0, group_2 = group; _i < group_2.length; _i++) {
+                        var item = group_2[_i];
+                        RES.queue.unloadResource(item);
                     }
-                });
-            });
+                    var index = RES.config.config.loadGroup.indexOf(name);
+                    RES.config.config.loadGroup.splice(index, 1);
+                }
+                else {
+                    var removeItemHash = {};
+                    for (var _a = 0, _b = RES.config.config.loadGroup; _a < _b.length; _a++) {
+                        var groupName = _b[_a];
+                        for (var key in RES.config.config.groups[groupName]) {
+                            var tmpname = RES.config.config.groups[groupName][key];
+                            if (removeItemHash[tmpname]) {
+                                removeItemHash[tmpname]++;
+                            }
+                            else {
+                                removeItemHash[tmpname] = 1;
+                            }
+                        }
+                    }
+                    for (var tmpname in removeItemHash) {
+                        if (removeItemHash[tmpname] && removeItemHash[tmpname] == 1) {
+                            var item = RES.config.getResource(tmpname);
+                            if (item) {
+                                RES.queue.unloadResource(item);
+                            }
+                        }
+                    }
+                    var index = RES.config.config.loadGroup.indexOf(name);
+                    RES.config.config.loadGroup.splice(index, 1);
+                }
+                return true;
+            }
+            else {
+                var item = RES.config.getResource(name);
+                if (item) {
+                    return RES.queue.unloadResource(item);
+                }
+                else {
+                    console.warn("\u65E0\u6CD5\u5220\u9664\u6307\u5B9A\u7EC4:" + name);
+                    return false;
+                }
+            }
         };
         /**
          * 设置最大并发加载线程数量，默认值是2.

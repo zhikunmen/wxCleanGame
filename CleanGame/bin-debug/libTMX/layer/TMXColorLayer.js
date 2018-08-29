@@ -34,4 +34,3 @@ var tiled;
     tiled.TMXColorLayer = TMXColorLayer;
     __reflect(TMXColorLayer.prototype, "tiled.TMXColorLayer");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXColorLayer.js.map

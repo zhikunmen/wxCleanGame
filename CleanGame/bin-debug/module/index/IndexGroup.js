@@ -38,4 +38,3 @@ var IndexGroup = (function (_super) {
     return IndexGroup;
 }(eui.Component));
 __reflect(IndexGroup.prototype, "IndexGroup");
-//# sourceMappingURL=IndexGroup.js.map

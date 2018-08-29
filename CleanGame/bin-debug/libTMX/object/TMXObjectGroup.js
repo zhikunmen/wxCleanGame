@@ -129,4 +129,3 @@ var tiled;
     tiled.TMXObjectGroup = TMXObjectGroup;
     __reflect(TMXObjectGroup.prototype, "tiled.TMXObjectGroup");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXObjectGroup.js.map

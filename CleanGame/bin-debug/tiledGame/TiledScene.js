@@ -119,4 +119,3 @@ var TiledScene = (function (_super) {
     return TiledScene;
 }(egret.DisplayObjectContainer));
 __reflect(TiledScene.prototype, "TiledScene");
-//# sourceMappingURL=TiledScene.js.map

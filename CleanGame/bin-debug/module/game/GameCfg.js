@@ -12,4 +12,3 @@ var GameCfg = (function () {
     return GameCfg;
 }());
 __reflect(GameCfg.prototype, "GameCfg");
-//# sourceMappingURL=GameCfg.js.map

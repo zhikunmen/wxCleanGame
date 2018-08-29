@@ -6,7 +6,7 @@ class GameData {
     public static targetScore:number = 0;
     public static isOver:boolean = false;
     public static isWin:boolean = false;
-    public static sourceUrl : string = "https://h5.publish.1stgame.cn/mahjong_native_test/dongbei-jilin/resource/";
+    public static sourceUrl : string = "https://h5publish.gamelaoyou.com/resource/";
 
     public static reset() {
         this.enterLv = 0;

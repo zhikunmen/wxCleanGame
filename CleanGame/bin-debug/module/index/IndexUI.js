@@ -24,9 +24,19 @@ var IndexUI = (function (_super) {
         this.addHeartBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, function () {
             //Director.getInstance().repleaceScene(new IndexScene());
             new Tips().show("功能暂未开放");
+            wx.shareAppMessage({
+                title: "menzhikun",
+                imageUrl: GameData.sourceUrl + "cleanGame/com/circle.png",
+                query: "门智坤",
+                success: function (e) {
+                    console.log("成功" + JSON.stringify(e));
+                },
+                fail: function (e) {
+                    console.error("失败" + JSON.stringify(e));
+                }
+            });
         }, this);
     };
     return IndexUI;
 }(eui.Component));
 __reflect(IndexUI.prototype, "IndexUI");
-//# sourceMappingURL=IndexUI.js.map

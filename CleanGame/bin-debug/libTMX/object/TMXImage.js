@@ -107,4 +107,3 @@ var tiled;
     tiled.TMXImage = TMXImage;
     __reflect(TMXImage.prototype, "tiled.TMXImage");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXImage.js.map

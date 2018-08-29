@@ -132,4 +132,3 @@ var tiled;
     tiled.Base64 = Base64;
     __reflect(Base64.prototype, "tiled.Base64");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=Base64.js.map

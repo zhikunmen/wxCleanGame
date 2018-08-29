@@ -51,4 +51,3 @@ var tiled;
     tiled.PolyLine = PolyLine;
     __reflect(PolyLine.prototype, "tiled.PolyLine");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=PolyLine.js.map

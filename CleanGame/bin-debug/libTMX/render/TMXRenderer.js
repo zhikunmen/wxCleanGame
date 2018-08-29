@@ -81,4 +81,3 @@ var tiled;
     tiled.TMXRenderer = TMXRenderer;
     __reflect(TMXRenderer.prototype, "tiled.TMXRenderer");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXRenderer.js.map

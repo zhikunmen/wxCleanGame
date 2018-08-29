@@ -35,9 +35,10 @@ const config: ResourceManagerConfig = {
             return {
                 outputDir,
                 commands: [
-                    new CustomPlugin(),
+                    // new CustomPlugin(),
                     new CompilePlugin({ libraryType: "release", defines: { DEBUG: false, RELEASE: true } }),
-                    new ExmlPlugin('commonjs'), // 非 EUI 项目关闭此设置
+                    new ExmlPlugin('commonjs2'), // 非 EUI 项目关闭此设置
+                    new TextureMergerPlugin({textureMergerRoot:["resource/cleanGame/com"]}),
                     new UglifyPlugin([{
                         sources: ["main.js"],
                         target: "main.min.js"

@@ -26,10 +26,7 @@
 //  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //////////////////////////////////////////////////////////////////////////////////////
-
 class Main extends eui.UILayer {
-
-
     protected createChildren(): void {
         super.createChildren();
 
@@ -59,16 +56,30 @@ class Main extends eui.UILayer {
     }
 
     private async runGame() {
+        wx.onShareAppMessage((e) => {
+            console.error("监听点击事件:" + JSON.stringify(e));
+        })
         await this.loadResource()
         this.createGameScene();
         // await platform.login();
         const userInfo = await platform.getUserInfo();
         console.log(userInfo);
-
+        wx.showShareMenu({ withShareTicket: true });
     }
 
     private async loadResource() {
         try {
+            wx.login({
+                success: (data) => {
+                    console.log("登陆消息: " + JSON.stringify(data));
+                    let request = new egret.URLRequest("https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=" + data.code + "&grant_type=authorization_code");
+                    request.method = egret.URLRequestMethod.GET;
+                    let loader = new egret.URLLoader(request);
+                    loader.once(egret.Event.COMPLETE, (msg) => {
+                        console.error("登陆信息:" + JSON.stringify(msg));
+                    }, this);
+                }
+            })
             const loadingView = new LoadingUI();
             this.stage.addChild(loadingView);
             await RES.loadConfig("resource/default.res.json", "resource/");

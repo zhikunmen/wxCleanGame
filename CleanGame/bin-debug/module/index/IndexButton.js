@@ -72,4 +72,3 @@ var IndexButton = (function (_super) {
     return IndexButton;
 }(eui.Component));
 __reflect(IndexButton.prototype, "IndexButton");
-//# sourceMappingURL=IndexButton.js.map

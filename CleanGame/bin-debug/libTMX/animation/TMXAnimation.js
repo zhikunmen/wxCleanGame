@@ -68,4 +68,3 @@ var tiled;
     tiled.TMXAnimation = TMXAnimation;
     __reflect(TMXAnimation.prototype, "tiled.TMXAnimation");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXAnimation.js.map

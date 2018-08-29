@@ -95,4 +95,3 @@ var tiled;
     tiled.TMXTilesetGroup = TMXTilesetGroup;
     __reflect(TMXTilesetGroup.prototype, "tiled.TMXTilesetGroup");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXTilesetGroup.js.map

@@ -19,4 +19,3 @@ var GameAddOneCfg = (function () {
     return GameAddOneCfg;
 }());
 __reflect(GameAddOneCfg.prototype, "GameAddOneCfg");
-//# sourceMappingURL=GameAddOneCfg.js.map

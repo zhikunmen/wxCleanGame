@@ -323,4 +323,3 @@ var tiled;
     tiled.TMXTileset = TMXTileset;
     __reflect(TMXTileset.prototype, "tiled.TMXTileset");
 })(tiled || (tiled = {}));
-//# sourceMappingURL=TMXTileset.js.map

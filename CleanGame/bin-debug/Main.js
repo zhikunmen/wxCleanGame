@@ -104,7 +104,11 @@ var Main = (function (_super) {
             var userInfo;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.loadResource()];
+                    case 0:
+                        wx.onShareAppMessage(function (e) {
+                            console.error("监听点击事件:" + JSON.stringify(e));
+                        });
+                        return [4 /*yield*/, this.loadResource()];
                     case 1:
                         _a.sent();
                         this.createGameScene();
@@ -112,6 +116,7 @@ var Main = (function (_super) {
                     case 2:
                         userInfo = _a.sent();
                         console.log(userInfo);
+                        wx.showShareMenu({ withShareTicket: true });
                         return [2 /*return*/];
                 }
             });
@@ -119,20 +124,32 @@ var Main = (function (_super) {
     };
     Main.prototype.loadResource = function () {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
             var loadingView, e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 4, , 5]);
+                        wx.login({
+                            success: function (data) {
+                                console.log("登陆消息: " + JSON.stringify(data));
+                                var request = new egret.URLRequest("https://api.weixin.qq.com/sns/jscode2session?appid=APPID&secret=SECRET&js_code=" + data.code + "&grant_type=authorization_code");
+                                request.method = egret.URLRequestMethod.GET;
+                                var loader = new egret.URLLoader(request);
+                                loader.once(egret.Event.COMPLETE, function (msg) {
+                                    console.error("登陆信息:" + JSON.stringify(msg));
+                                }, _this);
+                            }
+                        });
                         loadingView = new LoadingUI();
                         this.stage.addChild(loadingView);
-                        // await RES.loadConfig("resource/default.res.json", "resource/");
-                        return [4 /*yield*/, RES.loadConfig("default.res.json", GameData.sourceUrl)];
+                        return [4 /*yield*/, RES.loadConfig("resource/default.res.json", "resource/")];
                     case 1:
-                        // await RES.loadConfig("resource/default.res.json", "resource/");
                         _a.sent();
+                        // await RES.loadConfig("default.res.json", GameData.sourceUrl);
                         return [4 /*yield*/, this.loadTheme()];
                     case 2:
+                        // await RES.loadConfig("default.res.json", GameData.sourceUrl);
                         _a.sent();
                         return [4 /*yield*/, RES.loadGroup("preload", 0, loadingView)];
                     case 3:
@@ -198,4 +215,3 @@ var Main = (function (_super) {
     return Main;
 }(eui.UILayer));
 __reflect(Main.prototype, "Main");
-//# sourceMappingURL=Main.js.map
