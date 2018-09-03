@@ -40,8 +40,12 @@
 			"name": "promise"
 		},
 		{
-			"name": "wx",
+			"name": "wxgamelib",
 			"path": "../../wxGameLib"
+		},
+		{
+			"name": "wxdts",
+			"path": "../../wxdts"
 		}
 	]
 }

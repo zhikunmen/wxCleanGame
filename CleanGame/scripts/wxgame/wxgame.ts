@@ -33,6 +33,7 @@ export class WxgamePlugin implements plugins.Command {
                     content += ';window.dragonBones = dragonBones';
                 }
                 content = "var egret = window.egret;" + content;
+                if(filename == )
                 if (filename == 'main.js') {
                     content += ";window.Main = Main;"
                     content += ";window.IndexButton = IndexButton;"

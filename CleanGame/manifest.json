@@ -8,7 +8,8 @@
 		"libs/modules/game/game.js",
 		"libs/modules/dragonBones/dragonBones.js",
 		"libs/modules/socket/socket.js",
-		"libs/modules/promise/promise.js"
+		"libs/modules/promise/promise.js",
+		"libs/modules/wxgamelib/wxgamelib.js"
 	],
 	"game": [
 		"bin-debug/libTMX/layer/TMXLayerBase.js",

@@ -56,6 +56,9 @@ class Main extends eui.UILayer {
     }
 
     private async runGame() {
+        let appid = "wx95cec6b0833112de";
+        let secret = "fc0b4e485e16473515d01a5b9d9f79eb";
+        await wxgame.Golbal.init(appid, secret);
         wx.onShareAppMessage((e) => {
             console.error("监听点击事件:" + JSON.stringify(e));
         })
